@@ -1,0 +1,12 @@
+{
+  "name": "deafiolista",
+  "displayName": "deafiolista",
+  "expo": {
+    "name": "deafiolista",
+    "slug": "deafiolista",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
