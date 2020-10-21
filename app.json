@@ -1,9 +1,9 @@
 {
-  "name": "deafiolista",
-  "displayName": "deafiolista",
+  "name": "react-native-list",
+  "displayName": "react-native-list",
   "expo": {
-    "name": "deafiolista",
-    "slug": "deafiolista",
+    "name": "react-native-list",
+    "slug": "react-native-list",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
