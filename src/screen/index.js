@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 const renderItem = ({ item }) => (
-  <View style={{height: 200}}>
+  <View style={{height: 200, width: 800}}>
     <Text>{`${item.name}`}</Text>
   </View>
 );
@@ -45,12 +45,12 @@ export default function Index() {
         data={data}
         extraData={data}
         // maxToRenderPerBatch={3}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
         onEndReached={() => {
           setData([{id: data.length + 1, name: "teste"}, ...data])}
         }
-        onEndReachedThreshold={1}
+        onEndReachedThreshold={0.001}
       />
     </View>
   );
@@ -59,6 +59,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: 400,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
