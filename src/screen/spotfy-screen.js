@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 const renderItem = ({ item }) => (
-  <View style={{height: 200, width: 800}}>
+  <View style={{ height: 200, width: 800 }}>
     <Text>{`${item.name}`}</Text>
   </View>
 );
 export default function Index() {
   const [data, setData] = useState([
     {
-      id: "1",
-      name: "victor",
+      id: '1',
+      name: 'victor',
     },
     {
-      id: "2",
-      name: "victor",
+      id: '2',
+      name: 'victor',
     },
     {
-      id: "3",
-      name: "victor",
+      id: '3',
+      name: 'victor',
     },
     {
-      id: "010",
-      name: "victor",
+      id: '010',
+      name: 'victor',
     },
     {
-      id: "4",
-      name: "victor",
+      id: '4',
+      name: 'victor',
     },
     {
-      id: "5",
-      name: "victor",
+      id: '5',
+      name: 'victor',
     },
     {
-      id: "6",
-      name: "victor",
+      id: '6',
+      name: 'victor',
     },
   ]);
   return (
@@ -48,8 +48,8 @@ export default function Index() {
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
         onEndReached={() => {
-          setData([{id: data.length + 1, name: "teste"}, ...data])}
-        }
+          setData([{ id: data.length + 1, name: 'teste' }, ...data]);
+        }}
         onEndReachedThreshold={0.001}
       />
     </View>
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: 400,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

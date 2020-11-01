@@ -1,16 +1,11 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
-import Index from './src/screen/index'
-const Tabs = createBottomTabNavigator();
+import Drawer from './src/components/drawer/DrawerView-container';
 export default function App() {
   return (
     <NavigationContainer>
-      <Tabs.Navigator>
-        <Tabs.Screen name="Home" component={Index}></Tabs.Screen>
-        <Tabs.Screen name="Another" component={Index}></Tabs.Screen>
-      </Tabs.Navigator>
+      <Drawer />
     </NavigationContainer>
   );
 }
