@@ -40,10 +40,7 @@ export default function Index(props) {
   ]);
   return (
     <View style={styles.container}>
-      <View>
-
-      </View>
-      <TopBarView {...props} title="Spotfy" />
+       <TopBarView {...props} title="Spotfy" />
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Teste meu caro</Text>
