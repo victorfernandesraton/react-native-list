@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+
+import TopBarView from '../components/topbar/TopBarView-container';
 const renderItem = ({ item }) => (
   <View style={{ height: 200, width: 800 }}>
     <Text>{`${item.name}`}</Text>
   </View>
 );
-export default function Index() {
+export default function Index(props) {
   const [data, setData] = useState([
     {
       id: '1',
@@ -38,20 +40,26 @@ export default function Index() {
   ]);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>Teste meu caro</Text>
-      <Text>{data.length}</Text>
-      <FlatList
-        data={data}
-        extraData={data}
-        // maxToRenderPerBatch={3}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={renderItem}
-        onEndReached={() => {
-          setData([{ id: data.length + 1, name: 'teste' }, ...data]);
-        }}
-        onEndReachedThreshold={0.001}
-      />
+      <View>
+
+      </View>
+      <TopBarView {...props} title="Spotfy" />
+      <View style={styles.container}>
+        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Teste meu caro</Text>
+        <Text>{data.length}</Text>
+        <FlatList
+          data={data}
+          extraData={data}
+          // maxToRenderPerBatch={3}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderItem}
+          onEndReached={() => {
+            setData([{ id: data.length + 1, name: 'teste' }, ...data]);
+          }}
+          onEndReachedThreshold={0.001}
+        />
+      </View>
     </View>
   );
 }
@@ -59,7 +67,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: 400,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
