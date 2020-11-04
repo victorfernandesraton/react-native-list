@@ -9,3 +9,14 @@ export const calculePagination = ({ limit, offset, total }) => {
 		next: hasNext,
 	};
 };
+
+export const extractGiphyData = ({ item, type = 'preview' }) => {
+	const { fixed_width, original, title } = item.images;
+	const { width, height, url} = type == 'preview' ? fixed_width : original;
+	return {
+		url,
+		title,
+		width: parseInt(width),
+		height: parseInt(height),
+	};
+};

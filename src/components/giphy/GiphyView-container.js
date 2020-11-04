@@ -5,22 +5,25 @@ import { FlatList } from 'react-native-gesture-handler';
 import { initialState } from './Giphy-constants';
 
 import { fetchGifs, fetchGifsPagination } from './Giphy-action';
-import { calculePagination } from './Giphy-utils';
+import { calculePagination, extractGiphyData } from './Giphy-utils';
 
 import Reducer from './Giphy-reducer';
 
-const renderItem = ({ item }) => (
-	<View style={{ height: 200, width: 800 }}>
-		<Text>{`${item.title}`}</Text>
-		<Image
-			source={{ uri: item.images.fixed_height.url }}
-			style={{
-				height: 200,
-				width: 300,
-			}}
-		/>
-	</View>
-);
+const renderItem = ({ item, type='preview' }) => {
+	const {width, height, url} = extractGiphyData({item, type});
+	console.log(width, height, url)
+	return (
+		<View style={{ height, width }}>
+			<Image
+				source={{ url }}
+				style={{
+					height,
+					width,
+				}}
+			/>
+		</View>
+	);
+};
 
 function GiphyView(props) {
 	const [state, dispatch] = useReducer(Reducer, initialState);
