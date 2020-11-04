@@ -9,8 +9,8 @@ export default (state = initialState, { type, payload }) => {
 		case dispatch.FETCH:
 			return {
 				...state,
-				metadata: { ...payload.metadata },
 				items: [...state.items, ...payload.items],
+				metadata: { ...state.metadata, ...payload.metadata },
 				called: true,
 				loading: false,
 			};

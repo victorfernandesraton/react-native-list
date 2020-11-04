@@ -3,11 +3,14 @@ import { searchGiphy } from './Giphy-request';
 import { calculePagination } from './Giphy-utils';
 
 const getGifs = (typeDispatch) => async (dispatch, payload) => {
+	if (!payload.limit) {
+		payload.limit = 10;
+	}
 	dispatch({
 		type: typeDispatch.LOADING,
 	});
 	try {
-		const { data } = await searchGiphy({ ...payload });
+		const { data } = await searchGiphy({ ...payload,});
 		dispatch({
 			type: typeDispatch.SUCESS,
 			payload: {
@@ -16,6 +19,7 @@ const getGifs = (typeDispatch) => async (dispatch, payload) => {
 					offset: data?.pagination.offset,
 					total: data?.pagination?.total_count,
 					limit: payload.limit,
+					next: data?.pagination.offset < data.pagination.total_count
 				},
 			},
 		});

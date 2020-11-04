@@ -18,7 +18,7 @@ describe('utils test', () => {
 				limit: 10,
 				offset: 20,
 				total: 30,
-				next: true,
+				next: false,
 			});
 		});
 
