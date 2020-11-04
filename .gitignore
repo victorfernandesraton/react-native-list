@@ -64,4 +64,4 @@ web-build/
 
 # locks
 ./yarn.lock
-./package.lock.json    
+./package.lock.json
