@@ -1,4 +1,5 @@
 import SpotfyScreen from '../../screen/spotfy-screen';
+import GiphyScreen from '../../screen/giphy-screen';
 
 export const DrawerItens = [
   {
@@ -6,5 +7,10 @@ export const DrawerItens = [
     title: "Spotfy",
     component: SpotfyScreen,
     default: true,
-  },
+	},
+	{
+		name: 'giphy-screen',
+		title: 'Giphys and Stickers',
+		component: GiphyScreen,
+	}
 ];

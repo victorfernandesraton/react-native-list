@@ -1,10 +1,15 @@
 import Axios from 'axios';
 
 const giphyHttp = Axios.create({
-	baseURL: 'api.giphy.com/v1',
+	baseURL: 'https://api.giphy.com/v1',
 	params: {
-		api_key: process.env.REAACT_APP_GIPHY_KEY,
+		//TODO colocar enm env de anbiente
+		// api_key: process.env.REAACT_APP_GIPHY_KEY,
+		api_key: 'wdLwMP4iGP6oZRWh7l1dZ5yp27tRsXuY',
 	},
+	headers: {
+		'Content-Type': 'application/json'
+	}
 });
 
 export const searchGiphy = ({

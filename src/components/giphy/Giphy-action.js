@@ -24,6 +24,7 @@ const getGifs = (typeDispatch) => async (dispatch, payload) => {
 			type: typeDispatch.ERROR,
 			payload: { error: error },
 		});
+		throw new Error(error)
 	}
 };
 

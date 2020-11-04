@@ -5,7 +5,7 @@ export default (state = initialState, { type, payload }) => {
 		case dispatch.FETCHING:
 			return { ...state, loading: true };
 		case dispatch.ERROR:
-			return { ...state, error: payload.error };
+			return { ...state, error: payload.error, called: true };
 		case dispatch.FETCH:
 			return {
 				...state,
