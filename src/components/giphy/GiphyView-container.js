@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { Image, StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
 import { initialState } from './Giphy-constants';
 
@@ -12,8 +11,8 @@ import Reducer from './Giphy-reducer';
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		minHeight: 60,
 		backgroundColor: '#fff',
+		minHeight: 60,
 		flexDirection: 'row',
 		// flexWrap: 'wrap'
 		// alignItems: 'center',
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-const renderItem = ({ item, type='preview' }) => {
+const RenderItem = ({ item, type='preview', navigation }) => {
 	const {width, height, url} = extractGiphyData({item, type});
 	const styled = StyleSheet.create({
 		item: {
@@ -35,12 +34,19 @@ const renderItem = ({ item, type='preview' }) => {
 			// flexBasis: 0
 		}
 	})
+
 	return (
 		<View style={{ height, width }}>
-			<Image
-				source={{ uri: url }}
-				style={styled.item}
-			/>
+			<Button onPress={() => {
+				navigation.navigate('giphy-single', {
+					id: item.id
+				})
+			}} title="teste"/>
+				
+				<Image
+					source={{ uri: url }}
+					style={styled.item}
+				/>
 		</View>
 	);
 };
@@ -83,7 +89,7 @@ function GiphyView(props) {
 					numColumns={3}
 					maxToRenderPerBatch={10}
 					keyExtractor={(item) => item.id.toString()}
-					renderItem={renderItem}
+					renderItem={({item}) => <RenderItem navigation={props.navigation} item={item} />}
 					onEndReached={pagination}
 					onEndReachedThreshold={0.3}
 				/>
