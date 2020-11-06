@@ -1,5 +1,5 @@
 import Axios from 'axios';
-
+// import {REAACT_APP_GIPHY_KEY} from 'react-native-dotenv'
 const giphyHttp = Axios.create({
 	baseURL: 'https://api.giphy.com/v1',
 	params: {

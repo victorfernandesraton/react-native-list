@@ -9,17 +9,37 @@ import { calculePagination, extractGiphyData } from './Giphy-utils';
 
 import Reducer from './Giphy-reducer';
 
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		minHeight: 60,
+		backgroundColor: '#fff',
+		flexDirection: 'row',
+		// flexWrap: 'wrap'
+		// alignItems: 'center',
+		// justifyContent: 'center',
+	},
+	item: {
+		flexBasis: 0	
+	}
+});
+
 const renderItem = ({ item, type='preview' }) => {
 	const {width, height, url} = extractGiphyData({item, type});
-	console.log(width, height, url)
+	const styled = StyleSheet.create({
+		item: {
+			height,
+			width,
+			aspectRatio: 1, 
+			flex: 1
+			// flexBasis: 0
+		}
+	})
 	return (
 		<View style={{ height, width }}>
 			<Image
-				source={{ url }}
-				style={{
-					height,
-					width,
-				}}
+				source={{ uri: url }}
+				style={styled.item}
 			/>
 		</View>
 	);
@@ -60,6 +80,7 @@ function GiphyView(props) {
 				<FlatList
 					data={items}
 					extraData={items}
+					numColumns={3}
 					maxToRenderPerBatch={10}
 					keyExtractor={(item) => item.id.toString()}
 					renderItem={renderItem}
@@ -71,14 +92,5 @@ function GiphyView(props) {
 	);
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		minHeight: 60,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});
 
 export default GiphyView;
