@@ -2,7 +2,12 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 import HanburgerButton from './HanburgerButton';
+
+/**
+ * @param {{title: String, backgroundColor: Hex}} props 
+ */
 function TopBarView(props) {
+	const {backgroundColor} = props;
 	return (
 		<View
 			style={{

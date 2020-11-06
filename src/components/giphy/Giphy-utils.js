@@ -11,11 +11,10 @@ export const calculePagination = ({ limit, offset, total }) => {
 };
 
 export const extractGiphyData = ({ item, type = 'preview' }) => {
-	const { fixed_width, original, title } = item.images;
-	const { width, height, url} = type == 'preview' ? fixed_width : original;
+	const { width, height, url} = item.images[type || 'fixed_width'];
 	return {
 		url,
-		title,
+		title: item.title,
 		width: parseInt(width),
 		height: parseInt(height),
 	};
