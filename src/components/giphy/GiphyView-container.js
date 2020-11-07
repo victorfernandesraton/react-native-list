@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useReducer } from 'react';
 import {
 	StyleSheet,
 	Text,
+	TextInput,
+	Button,
 	View,
 	FlatList,
 	ActivityIndicator,
@@ -13,8 +15,6 @@ import { fetchGifs, fetchGifsPagination, changeQuery } from './Giphy-action';
 import { calculePagination } from './Giphy-utils';
 
 import Reducer from './Giphy-reducer';
-import { TextInput } from 'react-native-gesture-handler';
-
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -30,10 +30,11 @@ const styles = StyleSheet.create({
 	},
 	textInput: {
 		flex: 0,
+		height: 40,
 		width:320,
 		alignSelf: 'center',
 		paddingHorizontal: 3,
-		marginVertical: 5,
+		marginVertical: 16,
 		borderRadius: 10,
 		justifyContent: 'center',
 		backgroundColor: '#f3f3f3'
@@ -73,6 +74,8 @@ function GiphyView(props) {
 		<>
 			{!called && <ActivityIndicator size='large'/>}
 			<TextInput style={styles.textInput} value={query} onChangeText={changeText} />
+			<Button title='Gifs'/>
+			<Button title='Sticks'/>
 			{called && !error && (
 				<View style={styles.container}>
 					<FlatList
@@ -82,7 +85,7 @@ function GiphyView(props) {
 						maxToRenderPerBatch={10}
 						keyExtractor={(item) => item.id.toString()}
 						renderItem={({ item }) => (
-							<GiphyItem style={{ item: { flex: 1 } }} item={item} type='original' />
+							<GiphyItem style={{ item: { flex: 1 } }} item={item} type='downsized_medium' />
 						)}
 						onEndReached={pagination}
 						onEndReachedThreshold={0.3}

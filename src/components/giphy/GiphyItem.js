@@ -17,8 +17,6 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 
 	const navigation = useNavigation();
 
-	console.log(url)
-
 	return (
 		<TouchableOpacity
 			disabled={disabled}
