@@ -28,7 +28,7 @@ const GiphySingleView = ({ item }) => {
 				onPress={() => {
 					shareSingleImage(dispatch, Share, { item });
 				}}
-				title="Teste"
+				title="Compartilhar"
 			/>
 			<Text>{item.slug}</Text>
 		</View>

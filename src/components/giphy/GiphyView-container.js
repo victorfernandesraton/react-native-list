@@ -21,9 +21,21 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		minHeight: 60,
 		flexDirection: 'row',
+		flexBasis: 100,
+		alignContent: 'space-around'
 		// flexWrap: 'wrap'
 		// alignItems: 'center',
 		// justifyContent: 'center',
+	},
+	textInput: {
+		flex: 0,
+		width:320,
+		alignSelf: 'center',
+		paddingHorizontal: 3,
+		marginVertical: 5,
+		borderRadius: 10,
+		justifyContent: 'center',
+		backgroundColor: '#f3f3f3'
 	},
 	item: {
 		flexBasis: 0,
@@ -64,7 +76,7 @@ function GiphyView(props) {
 					<Text>Error</Text>
 				</View>
 			)}
-			<TextInput value={query} onChangeText={changeText} />
+			<TextInput style={styles.textInput} value={query} onChangeText={changeText} />
 			{called && !error && (
 				<View style={styles.container}>
 					<FlatList
