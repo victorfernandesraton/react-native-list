@@ -26,6 +26,8 @@ export default (state = initialState, { type, payload }) => {
 			return {...state, type: 'gifs'}
 		case dispatch.TYPE_STICK:
 			return {...state, type: 'stickers'}
+		case dispatch.CHANGE_QUERY:
+			return {...state, query: payload.query}
 		default:
 			return state;
 	}

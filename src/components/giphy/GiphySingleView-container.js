@@ -1,34 +1,19 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { View, Text, Button, Share } from 'react-native';
 
 import GiphyItem from './GiphyItem';
+import { shareSingleImage } from './Giphy-action';
+import { initialState } from './Giphy-constants';
+import Reducer from './Giphy-reducer';
 
 /**
  * @param {{item: {id: string, type: string}}} param0
  */
 const GiphySingleView = ({ item }) => {
-	const HandleShare = async (item) => {
-		try {
-			const result = await Share.share({
-				url: item.images.original.webp,
-				title: 'gif',
-				message: item.images.original.webp,
-			});
-			if (result.action === Share.sharedAction) {
-				if (result.activityType) {
-					// shared with activity type of result.activityType
-				} else {
-					// shared
-				}
-			} else if (result.action === Share.dismissedAction) {
-				// dismissed
-			}
-		} catch (error) {
-			alert(error.message);
-		}
-	};
+	const [{ loading, error }, dispatch] = useReducer(Reducer, initialState);
 
 	return (
+		
 		<View style={{ display: 'flex' }}>
 			<View style={{ alignItems: 'center' }}>
 				<GiphyItem
@@ -41,7 +26,7 @@ const GiphySingleView = ({ item }) => {
 			</View>
 			<Button
 				onPress={() => {
-					HandleShare(item);
+					shareSingleImage(dispatch, Share, { item });
 				}}
 				title="Teste"
 			/>

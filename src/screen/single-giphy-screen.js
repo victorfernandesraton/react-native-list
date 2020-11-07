@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 import Reducer from '../components/giphy/Giphy-reducer';
 import { initialState } from '../components/giphy/Giphy-constants';
@@ -10,15 +10,16 @@ export default function SingleGiphyScreen(props) {
 	const { route } = props;
 	const { id, type } = route.params;
 	const [state, dispatch] = useReducer(Reducer, initialState);
-	const { items, loading } = state;
+	const { items, loading, called } = state;
 
 	useEffect(() => {
 		fetcgGifById(dispatch, { id, type });
 	}, [id, type]);
 
-	if (loading) {
-		return <></>;
+	if (loading || !called) {
+		return <ActivityIndicator />;
 	}
+
 	return (
 		<View>
 			<GiphySingleView item={items?.[0]} key={id} />
