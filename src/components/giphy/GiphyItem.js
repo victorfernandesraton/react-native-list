@@ -17,6 +17,8 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 
 	const navigation = useNavigation();
 
+	console.log(url)
+
 	return (
 		<TouchableOpacity
 			disabled={disabled}
@@ -27,7 +29,7 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 				});
 			}}
 		>
-			<Image source={{ uri: url }} style={styled.item} />
+			<Image source={{ uri: url }} style={styled.item} resizeMode='cover' />
 		</TouchableOpacity>
 	);
 };

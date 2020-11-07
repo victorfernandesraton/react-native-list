@@ -19,10 +19,11 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#fff',
-		minHeight: 60,
+		// minHeight: 60,
 		flexDirection: 'row',
-		flexBasis: 100,
-		alignContent: 'space-around'
+		// flexBasis: 100,
+		// alignContent: 'space-around',
+		// aspectRatio: 1,
 		// flexWrap: 'wrap'
 		// alignItems: 'center',
 		// justifyContent: 'center',
@@ -70,23 +71,18 @@ function GiphyView(props) {
 
 	return (
 		<>
-			{!called && <ActivityIndicator />}
-			{error && (
-				<View>
-					<Text>Error</Text>
-				</View>
-			)}
+			{!called && <ActivityIndicator size='large'/>}
 			<TextInput style={styles.textInput} value={query} onChangeText={changeText} />
 			{called && !error && (
 				<View style={styles.container}>
 					<FlatList
-						key={items.length}
+						key={query}
 						data={items}
 						numColumns={3}
 						maxToRenderPerBatch={10}
 						keyExtractor={(item) => item.id.toString()}
 						renderItem={({ item }) => (
-							<GiphyItem style={{ item: { flex: 1 } }} item={item} />
+							<GiphyItem style={{ item: { flex: 1 } }} item={item} type='original' />
 						)}
 						onEndReached={pagination}
 						onEndReachedThreshold={0.3}
