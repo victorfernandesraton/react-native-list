@@ -1,102 +1,100 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
-import { Image, StyleSheet, Text, View, FlatList, Button } from 'react-native';
-
+import {
+	StyleSheet,
+	Text,
+	TextInput,
+	Button,
+	View,
+	FlatList,
+	ActivityIndicator,
+} from 'react-native';
+import GiphyItem from './GiphyItem';
 import { initialState } from './Giphy-constants';
 
-import { fetchGifs, fetchGifsPagination } from './Giphy-action';
-import { calculePagination, extractGiphyData } from './Giphy-utils';
+import { fetchGifs, fetchGifsPagination, changeQuery } from './Giphy-action';
+import { calculePagination } from './Giphy-utils';
 
 import Reducer from './Giphy-reducer';
-
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#fff',
-		minHeight: 60,
+		// minHeight: 60,
 		flexDirection: 'row',
+		// flexBasis: 100,
+		// alignContent: 'space-around',
+		// aspectRatio: 1,
 		// flexWrap: 'wrap'
 		// alignItems: 'center',
 		// justifyContent: 'center',
 	},
+	textInput: {
+		flex: 0,
+		height: 40,
+		width:320,
+		alignSelf: 'center',
+		paddingHorizontal: 3,
+		marginVertical: 16,
+		borderRadius: 10,
+		justifyContent: 'center',
+		backgroundColor: '#f3f3f3'
+	},
 	item: {
-		flexBasis: 0	
-	}
+		flexBasis: 0,
+	},
 });
-
-const RenderItem = ({ item, type='preview', navigation }) => {
-	const {width, height, url} = extractGiphyData({item, type});
-	const styled = StyleSheet.create({
-		item: {
-			height,
-			width,
-			aspectRatio: 1, 
-			flex: 1
-			// flexBasis: 0
-		}
-	})
-
-	return (
-		<View style={{ height, width }}>
-			<Button onPress={() => {
-				navigation.navigate('giphy-single', {
-					id: item.id
-				})
-			}} title="teste"/>
-				
-				<Image
-					source={{ uri: url }}
-					style={styled.item}
-				/>
-		</View>
-	);
-};
 
 function GiphyView(props) {
 	const [state, dispatch] = useReducer(Reducer, initialState);
-	const { loading, called, items, error, metadata } = state;
+	const { loading, called, query, items, error, metadata } = state;
 
 	useEffect(() => {
 		if (!loading) {
-			fetchGifs(dispatch, { q: 'cokie' });
+			fetchGifs(dispatch, { q: query });
 		}
-	}, [props]);
+	}, [props, query]);
 
 	const pagination = useCallback(() => {
 		if (metadata.total > items.length) {
 			fetchGifsPagination(dispatch, {
-				q: 'cokie',
+				q: query,
 				...calculePagination({ ...metadata }),
 			});
 		}
 	}, [props, metadata]);
 
+	const changeText = useCallback(
+		(query) => {
+			changeQuery(dispatch, { query });
+		},
+		[dispatch]
+	);
+
 	return (
-		<View style={styles.container}>
-			{!called && !error && (
-				<View>
-					<Text>Carrregando</Text>
-				</View>
-			)}
-			{error && (
-				<View>
-					<Text>Error</Text>
-				</View>
-			)}
+		<>
+			{!called && <ActivityIndicator size='large'/>}
+			<TextInput style={styles.textInput} value={query} onChangeText={changeText} />
+			<Button title='Gifs'/>
+			<Button title='Sticks'/>
 			{called && !error && (
-				<FlatList
-					data={items}
-					extraData={items}
-					numColumns={3}
-					maxToRenderPerBatch={10}
-					keyExtractor={(item) => item.id.toString()}
-					renderItem={({item}) => <RenderItem navigation={props.navigation} item={item} />}
-					onEndReached={pagination}
-					onEndReachedThreshold={0.3}
-				/>
+				<View style={styles.container}>
+					<FlatList
+						key={query}
+						data={items}
+						numColumns={3}
+						maxToRenderPerBatch={10}
+						keyExtractor={(item) => item.id.toString()}
+						renderItem={({ item }) => (
+							<GiphyItem style={{ item: { flex: 1 } }} item={item} type='downsized_medium' />
+						)}
+						onEndReached={pagination}
+						onEndReachedThreshold={0.3}
+					/>
+				</View>
 			)}
-		</View>
+			{loading && <ActivityIndicator size="large" />}
+		</>
 	);
 }
-
 
 export default GiphyView;

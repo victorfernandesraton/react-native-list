@@ -1,5 +1,5 @@
 import SpotfyScreen from '../../screen/spotfy-screen';
-import GiphyScreen from '../../screen/giphy-screen';
+import GiphyRoutes from '../../components/giphy/Giphy-routes';
 
 export const DrawerItens = [
   {
@@ -9,8 +9,8 @@ export const DrawerItens = [
     default: true,
 	},
 	{
-		name: 'giphy-screen',
+		name: 'giphy-routes',
 		title: 'Giphys and Stickers',
-		component: GiphyScreen,
+		component: GiphyRoutes,
 	}
 ];
