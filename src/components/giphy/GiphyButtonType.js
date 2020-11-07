@@ -24,7 +24,7 @@ const styled = StyleSheet.create({
 	},
 });
 export default function GiphyButtonType({ title, disabled, onPress }) {
-	const styledColor = disabled ? styled.deactive : styled.actived;
+	const styledColor = disabled ? styled.actived : styled.deactive;
 	return (
 		<TouchableOpacity onPress={onPress} disabled={disabled}>
 			<View style={{ ...styled.container, ...styledColor }}>

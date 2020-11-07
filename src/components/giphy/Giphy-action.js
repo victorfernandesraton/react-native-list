@@ -98,13 +98,13 @@ export const fetcgGifById = getSingleGif({
 export const ShareImage = (typeDispatch) => async (
 	dispatch,
 	Share,
-	{ item }
+	{ url }
 ) => {
 	try {
 		await Share.share({
-			url: item.images.original.webp,
+			url,
 			title: 'gif',
-			message: item.images.original.webp,
+			message: `Show this gif! ${url}`,
 		});
 	} catch (error) {
 		dispatch({
@@ -127,5 +127,34 @@ export const changeQuery = (dispatch, { query }) => {
 	dispatch({
 		type: dispatchType.CHANGE_QUERY,
 		payload: { query },
+	});
+};
+
+export const changeShareUrl = (dispatch, { item, type = 'small' }) => {
+	let share;
+	switch (type) {
+		case 'small':
+		default:
+			share = {
+				type,
+				url: item?.images?.preview_gif?.url || item?.images?.preview_gif?.webp,
+			};
+			break;
+		case 'mediun':
+			share = {
+				type,
+				url: item?.images?.downsized_small,
+			};
+			break;
+		case 'large':
+			share = {
+				type,
+				url: item.images.original.url || item.images.original.webp,
+			};
+			break;
+	}
+	dispatch({
+		type: dispatchType.SET_SHARE_URL,
+		payload: { share },
 	});
 };

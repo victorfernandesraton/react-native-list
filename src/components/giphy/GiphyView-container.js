@@ -86,7 +86,7 @@ function GiphyView(props) {
 							<GiphyItem
 								style={{ item: { flex: 1 } }}
 								item={item}
-								type="downsized_medium"
+								type="preview_gif"
 							/>
 						)}
 						onEndReached={pagination}
