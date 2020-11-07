@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
 import {
 	StyleSheet,
-	Text,
 	TextInput,
-	Button,
 	View,
 	FlatList,
 	ActivityIndicator,
+	Button,
+	Text,
 } from 'react-native';
 import GiphyItem from './GiphyItem';
 import { initialState } from './Giphy-constants';
@@ -21,31 +21,15 @@ import { calculePagination } from './Giphy-utils';
 
 import Reducer from './Giphy-reducer';
 import GiphyButtonType from './GiphyButtonType';
+import { TouchableHighlight } from 'react-native-gesture-handler';
+import GiphySearchTextBar from './GiphySearchTextBar';
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		// minHeight: 60,
 		flexDirection: 'row',
-		// flexBasis: 100,
-		// alignContent: 'space-around',
-		// aspectRatio: 1,
-		// flexWrap: 'wrap'
-		// alignItems: 'center',
-		// justifyContent: 'center',
 	},
 	buttonType: {
 		color: '#6157ff',
-	},
-	textInput: {
-		flex: 0,
-		height: 40,
-		width: 320,
-		alignSelf: 'center',
-		paddingHorizontal: 3,
-		marginVertical: 16,
-		borderRadius: 40,
-		justifyContent: 'center',
-		backgroundColor: '#f3f3f3',
 	},
 	item: {
 		flexBasis: 0,
@@ -86,12 +70,10 @@ function GiphyView(props) {
 	return (
 		<>
 			{!called && <ActivityIndicator size="large" />}
-			<TextInput
-				style={styles.textInput}
-				value={query}
-				onChangeText={changeText}
-			/>
-			<View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap',alignContent: 'stretch' }}>
+			<GiphySearchTextBar query={query} changeText={changeText}/>
+			<View
+				style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+			>
 				{['gifs', 'stickers'].map((e, k) => (
 					<GiphyButtonType
 						disabled={e === type}
@@ -107,7 +89,7 @@ function GiphyView(props) {
 						key={`${query}:${type}`}
 						data={items}
 						numColumns={3}
-						maxToRenderPerBatch={10}
+						maxToRenderPerBatch={20}
 						keyExtractor={(item) => item.id.toString()}
 						renderItem={({ item }) => (
 							<GiphyItem

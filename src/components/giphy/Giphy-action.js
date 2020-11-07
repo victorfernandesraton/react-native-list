@@ -9,6 +9,7 @@ const getGifs = (typeDispatch) => async (dispatch, payload) => {
 	dispatch({
 		type: typeDispatch.LOADING,
 	});
+
 	try {
 		const { data } = await searchGiphy({ ...payload });
 		dispatch({

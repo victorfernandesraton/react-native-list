@@ -1,33 +1,33 @@
 import React from 'react';
-import { Button, StyleSheet, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 const styled = StyleSheet.create({
-	actived: {
-		backgroundColor: '#6157ff',
-		color: '#fafafa',
-		flex: 1,
+	container: {
+		flex: 0,
+		padding: 8,
+		alignItems: 'center',
 		display: 'flex',
-		borderColor: '#fafafa'
+		borderWidth: 2,
+		borderRadius: 3,
 	},
 	deactive: {
 		backgroundColor: '#fafafa',
-		flex: 1,
-		display: 'flex',
 		color: '#6157ff',
-		borderEndColor: '#6157ff',
-		borderWidth: 1,
+		borderColor: '#6157ff',
+	},
+	actived: {
+		backgroundColor: '#6157ff',
+		color: '#fafafa',
+		borderColor: '#fafafa',
 	},
 });
 export default function GiphyButtonType({ title, disabled, onPress }) {
-	const { color, backgroundColor } = disabled
-		? styled.deactive
-		: styled.actived;
+	const styledColor = disabled ? styled.deactive : styled.actived;
 	return (
-		<Button
-			color={backgroundColor}
-			// disabled={disabled}
-			onPress={onPress}
-			title={title}
-		/>
+		<TouchableHighlight onPress={onPress} disabled={disabled}>
+			<View style={{...styled.container, ...styledColor}}>
+				<Text style={{...styledColor}}>{title.toUpperCase()}</Text>
+			</View>
+		</TouchableHighlight>
 	);
 }
