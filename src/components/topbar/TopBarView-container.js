@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { color } from 'react-native-reanimated';
 
 import HanburgerButton from './HanburgerButton';
 
@@ -7,16 +8,16 @@ import HanburgerButton from './HanburgerButton';
  * @param {{title: String, backgroundColor: Hex}} props 
  */
 function TopBarView(props) {
-	const {backgroundColor} = props;
+	const {backgroundColor, titleStyle, buttonColor} = props;
 	return (
 		<View
 			style={{
 				...styles.container,
-				backgroundColor: props.backgroundColor || 'yellow',
+				backgroundColor: backgroundColor || 'yellow',
 			}}
 		>
-			<HanburgerButton {...props} />
-			{props.title && <Text style={styles.title}>{props.title}</Text>}
+			<HanburgerButton {...props} color={buttonColor} />
+			{props.title && <Text style={{...styles.title, ...titleStyle}}>{props.title}</Text>}
 		</View>
 	);
 }

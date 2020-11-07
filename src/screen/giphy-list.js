@@ -7,7 +7,13 @@ import GiphyView from '../components/giphy/GiphyView-container';
 export default function GiphyList(props) {
 	return (
 		<View style={styles.container}>
-			<TopBarView {...props} title="Giphy" />
+			<TopBarView
+				{...props}
+				title="Giphy"
+				buttonColor={'#fafafa'}
+				backgroundColor="#121212"
+				titleStyle={{ color: '#fafafa' }}
+			/>
 			<GiphyView {...props} />
 		</View>
 	);
@@ -16,7 +22,8 @@ export default function GiphyList(props) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		height: '100%',
+		backgroundColor: '#0e0e0e',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},

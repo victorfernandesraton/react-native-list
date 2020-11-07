@@ -14,7 +14,7 @@ const GiphySingleView = ({ item }) => {
 
 	return (
 		
-		<View style={{ display: 'flex' }}>
+		<View style={{ display: 'flex'  }}>
 			<View style={{ alignItems: 'center' }}>
 				<GiphyItem
 					style={{ item: { flex: 0 } }}

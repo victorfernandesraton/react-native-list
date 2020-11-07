@@ -1,4 +1,4 @@
-import { dispatch, dispatch as dispatchType } from './Giphy-constants';
+import { dispatch as dispatchType } from './Giphy-constants';
 import { gifInformation, searchGiphy } from './Giphy-request';
 import { calculePagination } from './Giphy-utils';
 
@@ -94,7 +94,11 @@ export const fetcgGifById = getSingleGif({
 	SUCESS: dispatchType.FIRST_FETCH,
 });
 
-export const ShareImage = (typeDispatch) => async (dispatch, Share, { item }) => {
+export const ShareImage = (typeDispatch) => async (
+	dispatch,
+	Share,
+	{ item }
+) => {
 	try {
 		await Share.share({
 			url: item.images.original.webp,
@@ -110,12 +114,17 @@ export const ShareImage = (typeDispatch) => async (dispatch, Share, { item }) =>
 };
 
 export const shareSingleImage = ShareImage({
-	ERROR: dispatchType.ERROR
+	ERROR: dispatchType.ERROR,
 });
+export const changeType = (dispatch, { type }) => {
+	dispatch({
+		type: type === 'gifs' ? dispatchType.TYPE_STICK : dispatchType.TYPE_GIF,
+	});
+};
 
-export const changeQuery = (dispatch, {query}) => {
+export const changeQuery = (dispatch, { query }) => {
 	dispatch({
 		type: dispatchType.CHANGE_QUERY,
-		payload: {query}
-	})
-}
+		payload: { query },
+	});
+};
