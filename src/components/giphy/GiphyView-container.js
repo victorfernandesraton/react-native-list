@@ -32,7 +32,7 @@ function GiphyView(props) {
 
 	useEffect(() => {
 		if (!loading) {
-			fetchGifs(dispatch, { q: query, type });
+			fetchGifs(dispatch, { q: query, type, limit: 12 });
 		}
 	}, [props, query, type]);
 
@@ -41,6 +41,7 @@ function GiphyView(props) {
 			fetchGifsPagination(dispatch, {
 				q: query,
 				type,
+				limit: 12,
 				...calculePagination({ ...metadata }),
 			});
 		}
@@ -60,19 +61,19 @@ function GiphyView(props) {
 	return (
 		<>
 			{!called && <ActivityIndicator size="large" />}
-			<GiphySearchTextBar query={query} changeText={changeText} />
+			<GiphySearchTextBar
+				query={query}
+				changeText={changeText}
+				typeList={[
+					{ value: 'gifs', label: 'gif' },
+					{ value: 'stickers', label: 'stick' },
+				]}
+				type={type}
+				handleType={handleType}
+			/>
 			<View
 				style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-			>
-				{['gifs', 'stickers'].map((e, k) => (
-					<GiphyButtonType
-						disabled={e === type}
-						title={e}
-						key={k}
-						onPress={handleType}
-					/>
-				))}
-			</View>
+			></View>
 			{called && !error && (
 				<View style={styles.container}>
 					<FlatList

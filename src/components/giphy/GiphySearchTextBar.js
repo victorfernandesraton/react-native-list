@@ -6,34 +6,55 @@ import {
 	TouchableOpacity,
 	View,
 } from 'react-native';
+import GiphyButtonType from './GiphyButtonType';
 
 const styles = StyleSheet.create({
 	textArea: {
 		alignItems: 'center',
-		backgroundColor: '#f3f3f3',
+		backgroundColor: '#e7e7e7',
 		borderRadius: 40,
+		height: 56,
 		flexDirection: 'row',
 		marginHorizontal: 10,
+		marginVertical: 16,
 	},
 	textInput: {
 		alignSelf: 'center',
-		backgroundColor: '#f3f3f3',
 		flex: 1,
 		fontSize: 16,
-		height: 24,
+		height: 32,
 		justifyContent: 'center',
 		marginHorizontal: 16,
-		marginVertical: 16
+		marginVertical: 16,
 	},
 	closeButton: {
 		alignItems: 'center',
-		height: 24,
+		height: 32,
 		justifyContent: 'center',
-		margin: 16,
-		width: 16,
+		marginLeft: 8,
+		borderRadius: 100,
+		borderColor: '#ff457a',
+		borderWidth: 2,
+		marginRight: 16,
+		width: 32,
+	},
+	closeButtonText: {
+		color: '#ff457a',
+		fontSize: 8,
 	},
 });
-const GiphySearchTextBar = ({ query, changeText }) => {
+
+/**
+ *
+ * @param {{changeText: BlobCallback, query: string, type: string, typeList: Array<{value: string, label: string}>}}
+ */
+const GiphySearchTextBar = ({
+	changeText,
+	handleType,
+	query,
+	type,
+	typeList = [],
+}) => {
 	return (
 		<View style={styles.textArea}>
 			<TextInput
@@ -44,12 +65,26 @@ const GiphySearchTextBar = ({ query, changeText }) => {
 				value={query}
 			/>
 			{query !== '' && (
-				<TouchableOpacity
-					onPress={() => changeText('')}
-					style={styles.closeButton}
-				>
-					<Text>{'X'}</Text>
-				</TouchableOpacity>
+				<>
+					<View
+						style={{ display: 'flex', flexDirection: 'row', marginRight: 8 }}
+					>
+						{typeList.map((e, k) => (
+							<GiphyButtonType
+								disabled={e.value === type}
+								title={e.label}
+								key={k}
+								onPress={handleType}
+							/>
+						))}
+					</View>
+					<TouchableOpacity
+						onPress={() => changeText('')}
+						style={styles.closeButton}
+					>
+						<Text style={styles.closeButtonText}>{'X'}</Text>
+					</TouchableOpacity>
+				</>
 			)}
 		</View>
 	);
