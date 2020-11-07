@@ -11,12 +11,8 @@ const styles = StyleSheet.create({
 	textArea: {
 		alignItems: 'center',
 		backgroundColor: '#f3f3f3',
-		borderColor: 'gray',
-		borderRadius: 5,
-		borderWidth: 1,
-		borderWidth: 1,
+		borderRadius: 40,
 		flexDirection: 'row',
-		justifyContent: 'space-between',
 		marginHorizontal: 10,
 	},
 	textInput: {
@@ -24,18 +20,17 @@ const styles = StyleSheet.create({
 		backgroundColor: '#f3f3f3',
 		flex: 1,
 		fontSize: 16,
-		height: 20,
+		height: 24,
 		justifyContent: 'center',
-		marginHorizontal: 10,
-		marginVertical: 16,
-		width: '90%',
+		marginHorizontal: 16,
+		marginVertical: 16
 	},
 	closeButton: {
 		alignItems: 'center',
-		height: 16,
+		height: 24,
 		justifyContent: 'center',
-		margin: 8,
-		width: 24,
+		margin: 16,
+		width: 16,
 	},
 });
 const GiphySearchTextBar = ({ query, changeText }) => {

@@ -1,35 +1,25 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
-import {
-	StyleSheet,
-	TextInput,
-	View,
-	FlatList,
-	ActivityIndicator,
-	Button,
-	Text,
-} from 'react-native';
-import GiphyItem from './GiphyItem';
-import { initialState } from './Giphy-constants';
+
+import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
 
 import {
-	fetchGifs,
-	fetchGifsPagination,
 	changeQuery,
 	changeType,
+	fetchGifs,
+	fetchGifsPagination,
 } from './Giphy-action';
+import { initialState } from './Giphy-constants';
 import { calculePagination } from './Giphy-utils';
-
 import Reducer from './Giphy-reducer';
+
 import GiphyButtonType from './GiphyButtonType';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import GiphyItem from './GiphyItem';
 import GiphySearchTextBar from './GiphySearchTextBar';
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'row',
-	},
-	buttonType: {
-		color: '#6157ff',
 	},
 	item: {
 		flexBasis: 0,
@@ -70,7 +60,7 @@ function GiphyView(props) {
 	return (
 		<>
 			{!called && <ActivityIndicator size="large" />}
-			<GiphySearchTextBar query={query} changeText={changeText}/>
+			<GiphySearchTextBar query={query} changeText={changeText} />
 			<View
 				style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
 			>
