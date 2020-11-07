@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { extractGiphyData } from './Giphy-utils';
@@ -9,6 +9,7 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 	const styled = StyleSheet.create({
 		item: {
 			height,
+			backgroundColor: '#fafafa',
 			width,
 			aspectRatio: 1,
 			flex: style?.item?.flex,
@@ -27,7 +28,7 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 				});
 			}}
 		>
-			<Image source={{ uri: url }} style={styled.item} resizeMode='cover' />
+			<Image source={{ uri: url }} style={styled.item} resizeMode='cover' loadingIndicatorSource={<ActivityIndicator/>} />
 		</TouchableOpacity>
 	);
 };

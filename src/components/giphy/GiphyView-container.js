@@ -11,14 +11,19 @@ import {
 import GiphyItem from './GiphyItem';
 import { initialState } from './Giphy-constants';
 
-import { fetchGifs, fetchGifsPagination, changeQuery } from './Giphy-action';
+import {
+	fetchGifs,
+	fetchGifsPagination,
+	changeQuery,
+	changeType,
+} from './Giphy-action';
 import { calculePagination } from './Giphy-utils';
 
 import Reducer from './Giphy-reducer';
+import GiphyButtonType from './GiphyButtonType';
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
 		// minHeight: 60,
 		flexDirection: 'row',
 		// flexBasis: 100,
@@ -28,16 +33,19 @@ const styles = StyleSheet.create({
 		// alignItems: 'center',
 		// justifyContent: 'center',
 	},
+	buttonType: {
+		color: '#6157ff',
+	},
 	textInput: {
 		flex: 0,
 		height: 40,
-		width:320,
+		width: 320,
 		alignSelf: 'center',
 		paddingHorizontal: 3,
 		marginVertical: 16,
-		borderRadius: 10,
+		borderRadius: 40,
 		justifyContent: 'center',
-		backgroundColor: '#f3f3f3'
+		backgroundColor: '#f3f3f3',
 	},
 	item: {
 		flexBasis: 0,
@@ -46,22 +54,23 @@ const styles = StyleSheet.create({
 
 function GiphyView(props) {
 	const [state, dispatch] = useReducer(Reducer, initialState);
-	const { loading, called, query, items, error, metadata } = state;
+	const { loading, called, query, items, error, metadata, type } = state;
 
 	useEffect(() => {
 		if (!loading) {
-			fetchGifs(dispatch, { q: query });
+			fetchGifs(dispatch, { q: query, type });
 		}
-	}, [props, query]);
+	}, [props, query, type]);
 
 	const pagination = useCallback(() => {
 		if (metadata.total > items.length) {
 			fetchGifsPagination(dispatch, {
 				q: query,
+				type,
 				...calculePagination({ ...metadata }),
 			});
 		}
-	}, [props, metadata]);
+	}, [props, metadata, type]);
 
 	const changeText = useCallback(
 		(query) => {
@@ -70,22 +79,42 @@ function GiphyView(props) {
 		[dispatch]
 	);
 
+	const handleType = useCallback(() => {
+		changeType(dispatch, { type });
+	}, [dispatch, type]);
+
 	return (
 		<>
-			{!called && <ActivityIndicator size='large'/>}
-			<TextInput style={styles.textInput} value={query} onChangeText={changeText} />
-			<Button title='Gifs'/>
-			<Button title='Sticks'/>
+			{!called && <ActivityIndicator size="large" />}
+			<TextInput
+				style={styles.textInput}
+				value={query}
+				onChangeText={changeText}
+			/>
+			<View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap',alignContent: 'stretch' }}>
+				{['gifs', 'stickers'].map((e, k) => (
+					<GiphyButtonType
+						disabled={e === type}
+						title={e}
+						key={k}
+						onPress={handleType}
+					/>
+				))}
+			</View>
 			{called && !error && (
 				<View style={styles.container}>
 					<FlatList
-						key={query}
+						key={`${query}:${type}`}
 						data={items}
 						numColumns={3}
 						maxToRenderPerBatch={10}
 						keyExtractor={(item) => item.id.toString()}
 						renderItem={({ item }) => (
-							<GiphyItem style={{ item: { flex: 1 } }} item={item} type='downsized_medium' />
+							<GiphyItem
+								style={{ item: { flex: 1 } }}
+								item={item}
+								type="downsized_medium"
+							/>
 						)}
 						onEndReached={pagination}
 						onEndReachedThreshold={0.3}

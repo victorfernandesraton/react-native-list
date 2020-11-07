@@ -14,7 +14,7 @@ export default function HanburgerButton(props) {
   return (
     <Ionicons
       name="md-menu"
-      color="#000000"
+      color={props.color || "#000000"}
       size={32}
       style={styles.menuIcon}
       onPress={() => props.navigation.toggleDrawer()}
