@@ -1,11 +1,11 @@
-import SpotfyScreen from '../../screen/spotfy-screen';
+import TurismScreen from '../../screen/turism-screen';
 import GiphyScreen from '../../screen/giphy-screen';
 
 export const DrawerItens = [
   {
-    name: 'sporty-screen',
-    title: "Spotfy",
-    component: SpotfyScreen,
+    name: 'turism-screen',
+    title: "Melhores lugares para Conhecer",
+    component: TurismScreen,
     default: true,
 	},
 	{
