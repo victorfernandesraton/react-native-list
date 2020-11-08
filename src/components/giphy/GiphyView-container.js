@@ -8,7 +8,7 @@ import {
 	fetchGifs,
 	fetchGifsPagination,
 } from './Giphy-action';
-import { initialState } from './Giphy-constants';
+import { buttonType, initialState } from './Giphy-constants';
 import { calculePagination } from './Giphy-utils';
 import Reducer from './Giphy-reducer';
 
@@ -64,10 +64,7 @@ function GiphyView(props) {
 			<GiphySearchTextBar
 				query={query}
 				changeText={changeText}
-				typeList={[
-					{ value: 'gifs', label: 'gif' },
-					{ value: 'stickers', label: 'stick' },
-				]}
+				typeList={buttonType}
 				type={type}
 				handleType={handleType}
 			/>

@@ -19,3 +19,7 @@ export const extractGiphyData = ({ item, type = 'preview' }) => {
 		height: parseInt(height),
 	};
 };
+
+export const externalLink = async (Linking, {url}) => {
+	const isValid = await Linking
+}

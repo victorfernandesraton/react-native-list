@@ -32,3 +32,8 @@ export const buttonShare = [
 	{ title: 'Pequeno', value: 'small' },
 	{ title: 'Grande', value: 'large' },
 ];
+
+export const buttonType = [
+	{ value: 'gifs', label: 'gif' },
+	{ value: 'stickers', label: 'stick' },
+];
