@@ -13,6 +13,8 @@ import {
 export default class turismMain extends Component {
 	state = {
 		docs: [],
+		limit: 3,
+		page: 1,
 	};
 
 	componentDidMount() {
@@ -20,19 +22,29 @@ export default class turismMain extends Component {
 	}
 
 	loadProducts = async () => {
-		const response = await api.get('/lugares');
-
-		this.setState({ docs: response.data });
-	};
+        const response = await api.get('/lugares');
+        if (this.state.docs.length < 20) {
+            this.setState({
+                docs: [
+                    ...this.state.docs,
+                    ...response.data.slice(
+                        this.state.limit * (this.state.page - 1),
+                        this.state.limit * this.state.page
+                    ),
+                ],
+                page: this.state.page + 1,
+            });
+        }
+    };
 
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text>Teste</Text>
 				<FlatList
 					key={this.state.docs.length}
 					data={this.state.docs}
 					keyExtractor={(item) => item.id}
+					onEndReached={this.loadProducts}
 					renderItem={(item) => <RenderItem item={item} />}
 				/>
 			</View>
