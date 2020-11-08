@@ -4,11 +4,11 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import TopBarView from '../components/topbar/TopBarView-container';
 import Turism from '../components/turism/turismMain'
 
-const Turismscreen = () => {
+const Turismscreen = (props) => {
 	return (
 		<View>
-			<TopBarView title="Melhores lugares para conhecer" />
-			<Turism />
+			<TopBarView title="Melhores lugares para conhecer" {...props}/>
+			<Turism {...props}/>
 		</View>
 	)
 }
