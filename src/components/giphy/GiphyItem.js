@@ -1,19 +1,17 @@
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import {
-	ActivityIndicator,
 	Image,
 	StyleSheet,
-	Text,
 	TouchableOpacity,
-	View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { extractGiphyData } from './Giphy-utils';
+import GiphyPlaceholder from './GiphyPlaceholder';
 
 const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 	const { width, height, url } = extractGiphyData({ item, type });
-	
+
 	const styled = StyleSheet.create({
 		item: {
 			height,
@@ -21,13 +19,6 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 			width,
 			aspectRatio: 1,
 			flex: style?.item?.flex,
-		},
-		fallback: {
-			backgroundColor: '#20232A',
-			display: 'flex',
-			height: '100%',
-			justifyContent: 'center',
-			alignItems: 'center',
 		},
 	});
 
@@ -44,16 +35,15 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 				});
 			}}
 		>
-			{!loading && (
-				<View style={{...styled.fallback}}>
-					<ActivityIndicator color='yellow' style={{
-						alignSelf: 'center'
-					}} />
-				</View>
-			)}
-			<Image source={{ uri: url }} style={styled.item} resizeMode="cover" onLoadEnd={() => {
-				setLoading(true);
-			}} />
+			{!loading && <GiphyPlaceholder />}
+			<Image
+				source={{ uri: url }}
+				style={styled.item}
+				resizeMode="cover"
+				onLoadEnd={() => {
+					setLoading(true);
+				}}
+			/>
 		</TouchableOpacity>
 	);
 };
