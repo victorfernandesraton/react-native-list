@@ -7,6 +7,7 @@ import {
 	FlatList,
 	TouchableOpacity,
 	StyleSheet,
+	Image,
 } from 'react-native';
 
 export default class turismMain extends Component {
@@ -19,43 +20,42 @@ export default class turismMain extends Component {
 	}
 
 	loadProducts = async () => {
-		const response = await api.get('/products');
+		const response = await api.get('/lugares')
 
-		const { data } = response.data;
-
-		console.log(docs);
-
-		this.setState({ docs });
+		this.setState({ docs: response.data });
 	};
-
-	renderItem = ({ item }) => (
-		<View >
-			<Text style={styles.productTitle}>{item.title}</Text>
-			<Text style={styles.productDescription}>{item.descrition}</Text>
-
-			<TouchableOpacity style={styles.productButton}>
-				<Text style={styles.productButtonText}>Acessar</Text>
-			</TouchableOpacity>
-		</View>
-	);
 
 	render() {
 		return (
 			<View style={styles.container}>
+				<Text>Teste</Text>
 				<FlatList
-					contentContainerStyle={styles.list}
+					key={this.state.docs.length}
 					data={this.state.docs}
-					keyExtractor={(item) => item._id}
-					renderItem={this.renderItem}
+					keyExtractor={(item) => item.id}
+					renderItem={item => <RenderItem item={item} />}
 				/>
 			</View>
 		);
 	}
 }
 
+const RenderItem = ({ item }) => {
+	return (
+		<View>
+			<Text>{item.item.name}</Text>
+			<Text>{item.item.descrition}</Text>
+			<Image source={{uri: item.item.image}} width={200} height={200}/>
+
+			<TouchableOpacity>
+				<Text>Acessar</Text>
+			</TouchableOpacity>
+		</View>
+	)
+}
+
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		backgroundColor: '#fafafa',
 	},
 
