@@ -10,7 +10,7 @@ export const DrawerItens = [
 	},
 	{
 		name: 'giphy-routes',
-		title: 'Giphys and Stickers',
+		title: 'GIPHY',
 		component: GiphyRoutes,
 	}
 ];
