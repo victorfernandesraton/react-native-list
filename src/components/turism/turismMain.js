@@ -20,7 +20,7 @@ export default class turismMain extends Component {
 	}
 
 	loadProducts = async () => {
-		const response = await api.get('/lugares')
+		const response = await api.get('/lugares');
 
 		this.setState({ docs: response.data });
 	};
@@ -33,7 +33,7 @@ export default class turismMain extends Component {
 					key={this.state.docs.length}
 					data={this.state.docs}
 					keyExtractor={(item) => item.id}
-					renderItem={item => <RenderItem item={item} />}
+					renderItem={(item) => <RenderItem item={item} />}
 				/>
 			</View>
 		);
@@ -42,17 +42,19 @@ export default class turismMain extends Component {
 
 const RenderItem = ({ item }) => {
 	return (
-		<View>
-			<Text>{item.item.name}</Text>
-			<Text>{item.item.descrition}</Text>
-			<Image source={{uri: item.item.image}} width={200} height={200}/>
+		<View style={styles.productContainer}>
+			<Text style={styles.productTitle}>{item.item.name}</Text>
+			<Text style={styles.productDescription}>{item.item.descrition}</Text>
+			<View style={{ display: 'flex', justifyContent:'center', alignItems: 'center' }}>
+				<Image source={{ uri: item.item.image }} width={200} height={200} resizeMode='cover'/>
+			</View>
 
-			<TouchableOpacity>
+			<TouchableOpacity style={styles.productButton}>
 				<Text>Acessar</Text>
 			</TouchableOpacity>
 		</View>
-	)
-}
+	);
+};
 
 const styles = StyleSheet.create({
 	container: {
