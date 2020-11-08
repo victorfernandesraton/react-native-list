@@ -1,102 +1,106 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
-import { Image, StyleSheet, Text, View, FlatList, Button } from 'react-native';
 
-import { initialState } from './Giphy-constants';
+import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
 
-import { fetchGifs, fetchGifsPagination } from './Giphy-action';
-import { calculePagination, extractGiphyData } from './Giphy-utils';
-
+import {
+	changeQuery,
+	changeType,
+	fetchGifs,
+	fetchGifsPagination,
+} from './Giphy-action';
+import { buttonType, initialState } from './Giphy-constants';
+import { calculePagination } from './Giphy-utils';
 import Reducer from './Giphy-reducer';
+
+import GiphyButtonType from './GiphyButtonType';
+import GiphyItem from './GiphyItem';
+import GiphySearchTextBar from './GiphySearchTextBar';
+import GiphyPlaceholder from './GiphyPlaceholder';
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
-		minHeight: 60,
 		flexDirection: 'row',
-		// flexWrap: 'wrap'
-		// alignItems: 'center',
-		// justifyContent: 'center',
 	},
 	item: {
-		flexBasis: 0	
-	}
+		flexBasis: 0,
+	},
 });
-
-const RenderItem = ({ item, type='preview', navigation }) => {
-	const {width, height, url} = extractGiphyData({item, type});
-	const styled = StyleSheet.create({
-		item: {
-			height,
-			width,
-			aspectRatio: 1, 
-			flex: 1
-			// flexBasis: 0
-		}
-	})
-
-	return (
-		<View style={{ height, width }}>
-			<Button onPress={() => {
-				navigation.navigate('giphy-single', {
-					id: item.id
-				})
-			}} title="teste"/>
-				
-				<Image
-					source={{ uri: url }}
-					style={styled.item}
-				/>
-		</View>
-	);
-};
 
 function GiphyView(props) {
 	const [state, dispatch] = useReducer(Reducer, initialState);
-	const { loading, called, items, error, metadata } = state;
+	const { loading, called, query, items, error, metadata, type } = state;
 
 	useEffect(() => {
 		if (!loading) {
-			fetchGifs(dispatch, { q: 'cokie' });
+			fetchGifs(dispatch, { q: query, type, limit: 12 });
 		}
-	}, [props]);
+	}, [props, query, type]);
 
 	const pagination = useCallback(() => {
-		if (metadata.total > items.length) {
+		if (metadata.total > items.length && !loading) {
 			fetchGifsPagination(dispatch, {
-				q: 'cokie',
+				q: query,
+				type,
+				limit: 12,
 				...calculePagination({ ...metadata }),
 			});
 		}
-	}, [props, metadata]);
+	}, [props, metadata, type, loading]);
+
+	const changeText = useCallback(
+		(query) => {
+			changeQuery(dispatch, { query });
+		},
+		[dispatch]
+	);
+
+	const handleType = useCallback(() => {
+		changeType(dispatch, { type });
+	}, [dispatch, type]);
 
 	return (
-		<View style={styles.container}>
-			{!called && !error && (
-				<View>
-					<Text>Carrregando</Text>
-				</View>
-			)}
-			{error && (
-				<View>
-					<Text>Error</Text>
-				</View>
-			)}
+		<>
+			{!called && <ActivityIndicator size="large" />}
+			<GiphySearchTextBar
+				query={query}
+				changeText={changeText}
+				typeList={buttonType}
+				type={type}
+				handleType={handleType}
+			/>
+			<View
+				style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+			></View>
 			{called && !error && (
-				<FlatList
-					data={items}
-					extraData={items}
-					numColumns={3}
-					maxToRenderPerBatch={10}
-					keyExtractor={(item) => item.id.toString()}
-					renderItem={({item}) => <RenderItem navigation={props.navigation} item={item} />}
-					onEndReached={pagination}
-					onEndReachedThreshold={0.3}
-				/>
+				<View style={styles.container}>
+					<FlatList
+						key={`${query}:${type}`}
+						data={items}
+						numColumns={3}
+						maxToRenderPerBatch={20}
+						keyExtractor={(item) => item.id.toString()}
+						renderItem={({ item }) => (
+							<GiphyItem
+								style={{ item: { flex: 1 } }}
+								item={item}
+								type="preview_gif"
+							/>
+						)}
+						onEndReached={pagination}
+						onEndReachedThreshold={0.3}
+					/>
+				</View>
 			)}
-		</View>
+			{loading && called && (
+				<View style={{flexDirection: 'row', display:'flex', height: 120}}>
+					{[1,2,3].map(i => {
+						return <GiphyPlaceholder key={i} height={120} width={120} />
+					})}
+				</View>
+			)}
+		</>
 	);
 }
-
 
 export default GiphyView;

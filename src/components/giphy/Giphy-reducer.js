@@ -26,6 +26,10 @@ export default (state = initialState, { type, payload }) => {
 			return {...state, type: 'gifs'}
 		case dispatch.TYPE_STICK:
 			return {...state, type: 'stickers'}
+		case dispatch.CHANGE_QUERY:
+			return {...state, query: payload.query}
+		case dispatch.SET_SHARE_URL:
+			return {...state, share: {...payload.share}}
 		default:
 			return state;
 	}

@@ -1,5 +1,6 @@
 import TurismScreen from '../../screen/turism-screen';
-import GiphyScreen from '../../screen/giphy-screen';
+//import GiphyScreen from '../../screen/giphy-screen';
+import GiphyRoutes from '../../components/giphy/Giphy-routes';
 
 export const DrawerItens = [
   {
@@ -9,8 +10,9 @@ export const DrawerItens = [
     default: true,
 	},
 	{
-		name: 'giphy-screen',
-		title: 'Giphys and Stickers',
-		component: GiphyScreen,
+		name: 'giphy-routes',
+		title: 'GIPHY',
+		component: GiphyRoutes,
+		default: true,
 	}
 ];
