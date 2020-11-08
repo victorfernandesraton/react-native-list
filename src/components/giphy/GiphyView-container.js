@@ -15,6 +15,7 @@ import Reducer from './Giphy-reducer';
 import GiphyButtonType from './GiphyButtonType';
 import GiphyItem from './GiphyItem';
 import GiphySearchTextBar from './GiphySearchTextBar';
+import GiphyPlaceholder from './GiphyPlaceholder';
 
 const styles = StyleSheet.create({
 	container: {
@@ -91,7 +92,13 @@ function GiphyView(props) {
 					/>
 				</View>
 			)}
-			{loading && <ActivityIndicator size="large" />}
+			{loading && (
+				<View style={{ ...styles.container, height: 10, flexDirection: 'row' }}>
+					{[1,2,3].map(i => {
+						return <GiphyPlaceholder key={i} />
+					})}
+				</View>
+			)}
 		</>
 	);
 }

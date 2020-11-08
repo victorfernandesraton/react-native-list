@@ -5,7 +5,8 @@ const styled = StyleSheet.create({
 	fallback: {
 		backgroundColor: '#20232A',
 		display: 'flex',
-		height: '100%',
+		height: 120,
+		width: 120,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
