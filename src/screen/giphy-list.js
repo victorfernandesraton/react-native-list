@@ -9,7 +9,7 @@ export default function GiphyList(props) {
 		<View style={styles.container}>
 			<TopBarView
 				{...props}
-				title="Giphy"
+				title="GIPHY"
 				buttonColor={'#fafafa'}
 				backgroundColor="#121212"
 				titleStyle={{ color: '#fafafa' }}
