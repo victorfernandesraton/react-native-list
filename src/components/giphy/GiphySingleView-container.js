@@ -5,8 +5,6 @@ import {
 	TouchableOpacity,
 	Share,
 	StyleSheet,
-	Linking,
-	Alert,
 	ScrollView,
 } from 'react-native';
 
@@ -15,6 +13,7 @@ import { shareSingleImage, changeShareUrl } from './Giphy-action';
 import { initialState, buttonShare, buttonType } from './Giphy-constants';
 import Reducer from './Giphy-reducer';
 import GiphyButtonType from './GiphyButtonType';
+import GiphySingleText from './GiphySingleText';
 
 const GiphySingleView = ({ item }) => {
 	const [{ share }, dispatch] = useReducer(Reducer, initialState);
@@ -54,6 +53,8 @@ const GiphySingleView = ({ item }) => {
 			display: 'flex',
 			alignItems: 'flex-start',
 			justifyContent: 'flex-start',
+			flexDirection: 'column',
+			alignContent: 'flex-start',
 		},
 		textStyle: {
 			color: '#fafafa',
@@ -102,25 +103,15 @@ const GiphySingleView = ({ item }) => {
 					type="original"
 				/>
 				<View style={styled.textContainer}>
-					<Text style={styled.textStyle}>{`${item.title}`}</Text>
-					{item.user && (
-						<View style={{display: 'flex',flexDirection: 'row'}}>
-							<Text style={styled.textStyle}>By: </Text>
-							<Text
-								style={{ ...styled.textStyle, ...styled.textUrl }}
-								onPress={() => {
-									Linking.canOpenURL(item?.user?.profile_url)
-										.then((data) => {
-											Linking.openURL(item?.user?.profile_url);
-										})
-										.catch((data) => {
-											Alert('Unsupported link');
-										});
-								}}
-							>
-								{`@${item?.user?.username}`}
-							</Text>
-						</View>
+					{item?.title && (
+						<GiphySingleText label="Título" content={item?.title} />
+					)}
+					{item?.user && (
+						<GiphySingleText
+							label="By"
+							link={item?.user?.profile_url}
+							content={`@${item?.user?.username}`}
+						/>
 					)}
 					<View
 						style={{
@@ -135,6 +126,13 @@ const GiphySingleView = ({ item }) => {
 							<GiphyButtonType disabled title={item.type} />
 						)}
 					</View>
+					{item?.url && (
+						<GiphySingleText
+							label="fonte"
+							link={item?.url}
+							content={`Clique aqui`}
+						/>
+					)}
 				</View>
 			</View>
 		</ScrollView>
