@@ -23,8 +23,9 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 			flex: style?.item?.flex,
 		},
 		fallback: {
-			backgroundColor: 'red',
+			backgroundColor: '#20232A',
 			display: 'flex',
+			height: '100%',
 			justifyContent: 'center',
 			alignItems: 'center',
 		},
@@ -45,7 +46,7 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 		>
 			{!loading && (
 				<View style={{...styled.fallback}}>
-					<ActivityIndicator style={{
+					<ActivityIndicator color='yellow' style={{
 						alignSelf: 'center'
 					}} />
 				</View>
