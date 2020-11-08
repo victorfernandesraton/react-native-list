@@ -73,7 +73,6 @@ const GiphySingleView = ({ item }) => {
 		changeUrl('small');
 	}, []);
 
-	console.log(item);
 	return (
 		<ScrollView>
 			<View style={styled.buttonShareContainer}>

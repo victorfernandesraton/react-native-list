@@ -15,7 +15,6 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 	const styled = StyleSheet.create({
 		item: {
 			height,
-			backgroundColor: '#fafafa',
 			width,
 			aspectRatio: 1,
 			flex: style?.item?.flex,
@@ -35,8 +34,9 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 				});
 			}}
 		>
-			{!loading && <GiphyPlaceholder />}
+			{!loading && <GiphyPlaceholder  />}
 			<Image
+				key={item.id}
 				source={{ uri: url }}
 				style={styled.item}
 				resizeMode="cover"

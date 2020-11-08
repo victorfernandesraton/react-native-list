@@ -38,7 +38,7 @@ function GiphyView(props) {
 	}, [props, query, type]);
 
 	const pagination = useCallback(() => {
-		if (metadata.total > items.length) {
+		if (metadata.total > items.length && !loading) {
 			fetchGifsPagination(dispatch, {
 				q: query,
 				type,
@@ -46,7 +46,7 @@ function GiphyView(props) {
 				...calculePagination({ ...metadata }),
 			});
 		}
-	}, [props, metadata, type]);
+	}, [props, metadata, type, loading]);
 
 	const changeText = useCallback(
 		(query) => {
@@ -93,9 +93,9 @@ function GiphyView(props) {
 				</View>
 			)}
 			{loading && (
-				<View style={{ ...styles.container, height: 10, flexDirection: 'row' }}>
+				<View style={{flexDirection: 'row', display:'flex', height: 120}}>
 					{[1,2,3].map(i => {
-						return <GiphyPlaceholder key={i} />
+						return <GiphyPlaceholder key={i} height={120} width={120} />
 					})}
 				</View>
 			)}

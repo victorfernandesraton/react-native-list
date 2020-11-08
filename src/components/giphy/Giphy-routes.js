@@ -18,6 +18,13 @@ export default function Index() {
 				component={GiphySingleScreen}
 				options={{
 					headerShown: true,
+					headerBackTitleStyle: {
+						color: '#fafafa'
+					},
+					headerBackTitleStyle: {
+						color: '#fafafa'
+					},
+					title: 'Compartilhe'
 				}}
 			/>
 		</StackGiphy.Navigator>
