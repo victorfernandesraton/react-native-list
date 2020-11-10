@@ -2,14 +2,6 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const styles = StyleSheet.create({
-	menuIcon: {
-		zIndex: 9,
-		position: 'absolute',
-		//   top: 40,
-		left: 20,
-	},
-});
 export default function HanburgerButton(props) {
 	return (
 		<Ionicons
@@ -21,3 +13,11 @@ export default function HanburgerButton(props) {
 		/>
 	);
 }
+
+const styles = StyleSheet.create({
+	menuIcon: {
+		zIndex: 9,
+		position: 'absolute',
+		left: 20,
+	},
+});

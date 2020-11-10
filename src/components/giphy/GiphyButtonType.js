@@ -1,5 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+export default function GiphyButtonType({ title, disabled, onPress }) {
+	const styledColor = disabled ? styled.actived : styled.deactive;
+	return (
+		<TouchableOpacity onPress={onPress} disabled={disabled}>
+			<View style={{ ...styled.container, ...styledColor }}>
+				<Text style={{ ...styledColor, ...styled.textStyle }}>
+					{title.toUpperCase()}
+				</Text>
+			</View>
+		</TouchableOpacity>
+	);
+}
+
 const styled = StyleSheet.create({
 	container: {
 		flex: 0,
@@ -23,15 +37,3 @@ const styled = StyleSheet.create({
 		color: '#fafafa',
 	},
 });
-export default function GiphyButtonType({ title, disabled, onPress }) {
-	const styledColor = disabled ? styled.actived : styled.deactive;
-	return (
-		<TouchableOpacity onPress={onPress} disabled={disabled}>
-			<View style={{ ...styled.container, ...styledColor }}>
-				<Text style={{ ...styledColor, ...styled.textStyle }}>
-					{title.toUpperCase()}
-				</Text>
-			</View>
-		</TouchableOpacity>
-	);
-}

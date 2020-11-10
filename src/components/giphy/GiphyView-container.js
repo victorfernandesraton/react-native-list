@@ -12,23 +12,15 @@ import { buttonType, initialState } from './Giphy-constants';
 import { calculePagination } from './Giphy-utils';
 import Reducer from './Giphy-reducer';
 
-import GiphyButtonType from './GiphyButtonType';
 import GiphyItem from './GiphyItem';
 import GiphySearchTextBar from './GiphySearchTextBar';
 import GiphyPlaceholder from './GiphyPlaceholder';
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		flexDirection: 'row',
-	},
-	item: {
-		flexBasis: 0,
-	},
-});
-
-function GiphyView(props) {
-	const [state, dispatch] = useReducer(Reducer, initialState);
+export default function GiphyView(props) {
+	const [state, dispatch] = useReducer(Reducer, {
+		...initialState,
+		query: 'Donald Trump',
+	});
 	const { loading, called, query, items, error, metadata, type } = state;
 
 	useEffect(() => {
@@ -103,4 +95,12 @@ function GiphyView(props) {
 	);
 }
 
-export default GiphyView;
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		flexDirection: 'row',
+	},
+	item: {
+		flexBasis: 0,
+	},
+});

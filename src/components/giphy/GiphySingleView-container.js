@@ -15,7 +15,7 @@ import Reducer from './Giphy-reducer';
 import GiphyButtonType from './GiphyButtonType';
 import GiphySingleText from './GiphySingleText';
 
-const GiphySingleView = ({ item }) => {
+export default function GiphySingleView({ item }) {
 	const [{ share }, dispatch] = useReducer(Reducer, initialState);
 
 	const changeUrl = useCallback(
@@ -24,51 +24,6 @@ const GiphySingleView = ({ item }) => {
 		},
 		[share, item]
 	);
-
-	const styled = StyleSheet.create({
-		container: {
-			alignItems: 'center',
-		},
-		buttonShareContainer: {
-			margin: 16,
-			display: 'flex',
-			flexDirection: 'row',
-			alignItems: 'center',
-			justifyContent: 'center',
-		},
-		buttonShare: {
-			marginHorizontal: 8,
-			height: 40,
-			display: 'flex',
-			justifyContent: 'center',
-			alignContent: 'center',
-			padding: 8,
-			backgroundColor: '#212121',
-		},
-		buttonShareText: {
-			fontSize: 12,
-			color: '#fafafa',
-		},
-		textContainer: {
-			display: 'flex',
-			alignItems: 'flex-start',
-			justifyContent: 'flex-start',
-			flexDirection: 'column',
-			alignContent: 'flex-start',
-		},
-		textStyle: {
-			color: '#fafafa',
-			fontSize: 16,
-			marginVertical: 4,
-		},
-		textSpam: {
-			color: '#dadada',
-		},
-		textUrl: {
-			textDecorationStyle: 'solid',
-			color: '#45DCD2',
-		},
-	});
 
 	useEffect(() => {
 		changeUrl('small');
@@ -137,6 +92,49 @@ const GiphySingleView = ({ item }) => {
 			</View>
 		</ScrollView>
 	);
-};
+}
 
-export default GiphySingleView;
+const styled = StyleSheet.create({
+	container: {
+		alignItems: 'center',
+	},
+	buttonShareContainer: {
+		margin: 16,
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	buttonShare: {
+		marginHorizontal: 8,
+		height: 40,
+		display: 'flex',
+		justifyContent: 'center',
+		alignContent: 'center',
+		padding: 8,
+		backgroundColor: '#212121',
+	},
+	buttonShareText: {
+		fontSize: 12,
+		color: '#fafafa',
+	},
+	textContainer: {
+		display: 'flex',
+		alignItems: 'flex-start',
+		justifyContent: 'flex-start',
+		flexDirection: 'column',
+		alignContent: 'flex-start',
+	},
+	textStyle: {
+		color: '#fafafa',
+		fontSize: 16,
+		marginVertical: 4,
+	},
+	textSpam: {
+		color: '#dadada',
+	},
+	textUrl: {
+		textDecorationStyle: 'solid',
+		color: '#45DCD2',
+	},
+});

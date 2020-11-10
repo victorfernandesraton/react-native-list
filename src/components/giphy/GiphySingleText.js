@@ -1,30 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Linking } from 'react-native';
 
-const styled = StyleSheet.create({
-	container: {
-		display: 'flex',
-		flexDirection: 'row',
-	},
-	textContainer: {
-		display: 'flex',
-		alignItems: 'flex-start',
-		justifyContent: 'flex-start',
-	},
-	textStyle: {
-		color: '#fafafa',
-		fontSize: 16,
-		marginVertical: 4,
-	},
-	textSpam: {
-		color: '#dadada',
-	},
-	textUrl: {
-		textDecorationStyle: 'solid',
-		color: '#45DCD2',
-	},
-});
-const GiphySingleText = ({ label, content, link }) => {
+export default function GiphySingleText({ label, content, link }) {
 	return (
 		<View style={styled.container}>
 			{link ? (
@@ -52,6 +29,28 @@ const GiphySingleText = ({ label, content, link }) => {
 			)}
 		</View>
 	);
-};
+}
 
-export default GiphySingleText;
+const styled = StyleSheet.create({
+	container: {
+		display: 'flex',
+		flexDirection: 'row',
+	},
+	textContainer: {
+		display: 'flex',
+		alignItems: 'flex-start',
+		justifyContent: 'flex-start',
+	},
+	textStyle: {
+		color: '#fafafa',
+		fontSize: 16,
+		marginVertical: 4,
+	},
+	textSpam: {
+		color: '#dadada',
+	},
+	textUrl: {
+		textDecorationStyle: 'solid',
+		color: '#45DCD2',
+	},
+});

@@ -8,6 +8,51 @@ import {
 } from 'react-native';
 import GiphyButtonType from './GiphyButtonType';
 
+/**
+ *
+ * @param {{changeText: BlobCallback, query: string, type: string, typeList: Array<{value: string, label: string}>}}
+ */
+export default function GiphySearchTextBar({
+	changeText,
+	handleType,
+	query,
+	type,
+	typeList = [],
+}) {
+	return (
+		<View style={styles.textArea}>
+			<TextInput
+				clearButtonMode="always"
+				onChangeText={changeText}
+				placeholder="digite algo para buscar"
+				style={styles.textInput}
+				value={query}
+			/>
+			{query !== '' && (
+				<>
+					<View
+						style={{ display: 'flex', flexDirection: 'row', marginRight: 8 }}
+					>
+						{typeList.map((e, k) => (
+							<GiphyButtonType
+								disabled={e.value === type}
+								title={e.label}
+								key={k}
+								onPress={handleType}
+							/>
+						))}
+					</View>
+					<TouchableOpacity
+						onPress={() => changeText('')}
+						style={styles.closeButton}
+					>
+						<Text style={styles.closeButtonText}>{'X'}</Text>
+					</TouchableOpacity>
+				</>
+			)}
+		</View>
+	);
+}
 const styles = StyleSheet.create({
 	textArea: {
 		alignItems: 'center',
@@ -43,51 +88,3 @@ const styles = StyleSheet.create({
 		fontSize: 8,
 	},
 });
-
-/**
- *
- * @param {{changeText: BlobCallback, query: string, type: string, typeList: Array<{value: string, label: string}>}}
- */
-const GiphySearchTextBar = ({
-	changeText,
-	handleType,
-	query,
-	type,
-	typeList = [],
-}) => {
-	return (
-		<View style={styles.textArea}>
-			<TextInput
-				clearButtonMode="always"
-				onChangeText={changeText}
-				placeholder="digite algo para buscar"
-				style={styles.textInput}
-				value={query}
-			/>
-			{query !== '' && (
-				<>
-					<View
-						style={{ display: 'flex', flexDirection: 'row', marginRight: 8 }}
-					>
-						{typeList.map((e, k) => (
-							<GiphyButtonType
-								disabled={e.value === type}
-								title={e.label}
-								key={k}
-								onPress={handleType}
-							/>
-						))}
-					</View>
-					<TouchableOpacity
-						onPress={() => changeText('')}
-						style={styles.closeButton}
-					>
-						<Text style={styles.closeButtonText}>{'X'}</Text>
-					</TouchableOpacity>
-				</>
-			)}
-		</View>
-	);
-};
-
-export default GiphySearchTextBar;

@@ -1,13 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { color } from 'react-native-reanimated';
 
 import HanburgerButton from './HanburgerButton';
 
 /**
  * @param {{title: String, backgroundColor: Hex}} props
  */
-function TopBarView(props) {
+export default function TopBarView(props) {
 	const { backgroundColor, titleStyle, buttonColor } = props;
 	return (
 		<View
@@ -41,5 +40,3 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 	},
 });
-
-export default TopBarView;
