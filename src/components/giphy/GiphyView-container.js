@@ -93,9 +93,9 @@ function GiphyView(props) {
 				</View>
 			)}
 			{loading && called && (
-				<View style={{flexDirection: 'row', display:'flex', height: 120}}>
-					{[1,2,3].map(i => {
-						return <GiphyPlaceholder key={i} height={120} width={120} />
+				<View style={{ flexDirection: 'row', display: 'flex', height: 120 }}>
+					{[1, 2, 3].map((i) => {
+						return <GiphyPlaceholder key={i} height={120} width={120} />;
 					})}
 				</View>
 			)}

@@ -10,7 +10,7 @@ const styled = StyleSheet.create({
 	},
 });
 
-const GiphyPlaceholder = ({width='100%', height='100%'}) => {
+const GiphyPlaceholder = ({ width = '100%', height = '100%' }) => {
 	return (
 		<View style={{ ...styled.fallback, height, width }}>
 			<ActivityIndicator

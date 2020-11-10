@@ -45,8 +45,19 @@ const RenderItem = ({ item }) => {
 		<View style={styles.productContainer}>
 			<Text style={styles.productTitle}>{item.item.name}</Text>
 			<Text style={styles.productDescription}>{item.item.descrition}</Text>
-			<View style={{ display: 'flex', justifyContent:'center', alignItems: 'center' }}>
-				<Image source={{ uri: item.item.image }} width={200} height={200} resizeMode='cover'/>
+			<View
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<Image
+					source={{ uri: item.item.image }}
+					width={200}
+					height={200}
+					resizeMode="cover"
+				/>
 			</View>
 
 			<TouchableOpacity style={styles.productButton}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import GiphySingleScreen from '../../screen/single-giphy-screen'
-import GiphyScreen from '../../screen/giphy-list'
+import GiphySingleScreen from '../../screen/single-giphy-screen';
+import GiphyScreen from '../../screen/giphy-list';
 
 const StackGiphy = createStackNavigator();
 export default function Index() {
@@ -19,12 +19,12 @@ export default function Index() {
 				options={{
 					headerShown: true,
 					headerBackTitleStyle: {
-						color: '#fafafa'
+						color: '#fafafa',
 					},
 					headerBackTitleStyle: {
-						color: '#fafafa'
+						color: '#fafafa',
 					},
-					title: 'Compartilhe'
+					title: 'Compartilhe',
 				}}
 			/>
 		</StackGiphy.Navigator>

@@ -8,8 +8,8 @@ const giphyHttp = Axios.create({
 		api_key: 'wdLwMP4iGP6oZRWh7l1dZ5yp27tRsXuY',
 	},
 	headers: {
-		'Content-Type': 'application/json'
-	}
+		'Content-Type': 'application/json',
+	},
 });
 
 export const searchGiphy = ({

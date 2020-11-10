@@ -4,23 +4,23 @@ const Drawer = createDrawerNavigator();
 
 import { DrawerItens } from './Drawer-constants';
 function DrawerView() {
-  return (
-    <Drawer.Navigator>
-      {DrawerItens.map((item, key) => {
-        return (
-          <Drawer.Screen
-            name={item.name}
-            component={item.component}
-            options={{
-              title: item.title,
-              drawerLabel: item.title,
-            }}
-            key={key}
-          />
-        );
-      })}
-    </Drawer.Navigator>
-  );
+	return (
+		<Drawer.Navigator>
+			{DrawerItens.map((item, key) => {
+				return (
+					<Drawer.Screen
+						name={item.name}
+						component={item.component}
+						options={{
+							title: item.title,
+							drawerLabel: item.title,
+						}}
+						key={key}
+					/>
+				);
+			})}
+		</Drawer.Navigator>
+	);
 }
 
 export default DrawerView;

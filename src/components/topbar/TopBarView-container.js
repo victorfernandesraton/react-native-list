@@ -5,10 +5,10 @@ import { color } from 'react-native-reanimated';
 import HanburgerButton from './HanburgerButton';
 
 /**
- * @param {{title: String, backgroundColor: Hex}} props 
+ * @param {{title: String, backgroundColor: Hex}} props
  */
 function TopBarView(props) {
-	const {backgroundColor, titleStyle, buttonColor} = props;
+	const { backgroundColor, titleStyle, buttonColor } = props;
 	return (
 		<View
 			style={{
@@ -17,7 +17,9 @@ function TopBarView(props) {
 			}}
 		>
 			<HanburgerButton {...props} color={buttonColor} />
-			{props.title && <Text style={{...styles.title, ...titleStyle}}>{props.title}</Text>}
+			{props.title && (
+				<Text style={{ ...styles.title, ...titleStyle }}>{props.title}</Text>
+			)}
 		</View>
 	);
 }
@@ -27,8 +29,8 @@ const styles = StyleSheet.create({
 		alignSelf: 'stretch',
 		height: 64,
 		shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2000 },
-    shadowOpacity: 0,
+		shadowOffset: { width: 0, height: 2000 },
+		shadowOpacity: 0,
 		flexDirection: 'row', // row
 		alignItems: 'center',
 		justifyContent: 'center', // center, space-around
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 24,
-	}
+	},
 });
 
 export default TopBarView;

@@ -2,7 +2,7 @@ export const initialState = {
 	items: [],
 	share: {
 		url: '',
-		type: 'small'
+		type: 'small',
 	},
 	query: '',
 	metadata: {

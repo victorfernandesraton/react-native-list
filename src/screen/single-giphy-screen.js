@@ -21,7 +21,7 @@ export default function SingleGiphyScreen(props) {
 	}
 
 	return (
-		<View style={{backgroundColor: '#0e0e0e' ,height: '100%'}}>
+		<View style={{ backgroundColor: '#0e0e0e', height: '100%' }}>
 			<GiphySingleView item={items?.[0]} key={id} />
 		</View>
 	);

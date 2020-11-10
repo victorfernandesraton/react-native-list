@@ -42,6 +42,5 @@ describe('utils test', () => {
 				next: false,
 			});
 		});
-			
 	});
 });

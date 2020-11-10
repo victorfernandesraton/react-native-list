@@ -11,7 +11,7 @@ export const calculePagination = ({ limit, offset, total }) => {
 };
 
 export const extractGiphyData = ({ item, type = 'preview' }) => {
-	const { width, height, url, webp} = item.images[type || 'fixed_width'];
+	const { width, height, url, webp } = item.images[type || 'fixed_width'];
 	return {
 		url: url || webp,
 		title: item.title,
@@ -20,6 +20,6 @@ export const extractGiphyData = ({ item, type = 'preview' }) => {
 	};
 };
 
-export const externalLink = async (Linking, {url}) => {
-	const isValid = await Linking
-}
+export const externalLink = async (Linking, { url }) => {
+	const isValid = await Linking;
+};

@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-	Image,
-	StyleSheet,
-	TouchableOpacity,
-} from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { extractGiphyData } from './Giphy-utils';
@@ -34,7 +30,7 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 				});
 			}}
 		>
-			{!loading && <GiphyPlaceholder  />}
+			{!loading && <GiphyPlaceholder />}
 			<Image
 				key={item.id}
 				source={{ uri: url }}
