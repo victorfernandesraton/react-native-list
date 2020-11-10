@@ -5,11 +5,14 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "expo:android": "expo start --android",
+    "expo:android": "npm run format && expo start --android",
     "start": "react-native start",
 		"test": "jest",
 		"format": "prettier -w ./src && eslint --fix",
-		"preinstall": "npm run format"
+		"preinstall": "npm run format",
+		"prestart": "npm run format",
+		"prestop": "npm run format",
+		"pretest": "npm run format"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
