@@ -12,13 +12,13 @@ import GiphyButtonType from './GiphyButtonType';
  *
  * @param {{changeText: BlobCallback, query: string, type: string, typeList: Array<{value: string, label: string}>}}
  */
-const GiphySearchTextBar = ({
+export default function GiphySearchTextBar({
 	changeText,
 	handleType,
 	query,
 	type,
 	typeList = [],
-}) => {
+}) {
 	return (
 		<View style={styles.textArea}>
 			<TextInput
@@ -52,7 +52,8 @@ const GiphySearchTextBar = ({
 			)}
 		</View>
 	);
-};const styles = StyleSheet.create({
+};
+const styles = StyleSheet.create({
 	textArea: {
 		alignItems: 'center',
 		backgroundColor: '#e7e7e7',
@@ -87,7 +88,3 @@ const GiphySearchTextBar = ({
 		fontSize: 8,
 	},
 });
-
-
-
-export default GiphySearchTextBar;

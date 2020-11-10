@@ -15,7 +15,7 @@ import Reducer from './Giphy-reducer';
 import GiphyButtonType from './GiphyButtonType';
 import GiphySingleText from './GiphySingleText';
 
-const GiphySingleView = ({ item }) => {
+export default function GiphySingleView({ item }) {
 	const [{ share }, dispatch] = useReducer(Reducer, initialState);
 
 	const changeUrl = useCallback(
@@ -138,6 +138,3 @@ const styled = StyleSheet.create({
 		color: '#45DCD2',
 	},
 });
-
-
-export default GiphySingleView;

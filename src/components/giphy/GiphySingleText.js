@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Linking } from 'react-native';
 
-const GiphySingleText = ({ label, content, link }) => {
+export default function GiphySingleText({ label, content, link }) {
 	return (
 		<View style={styled.container}>
 			{link ? (
@@ -54,5 +54,3 @@ const styled = StyleSheet.create({
 		color: '#45DCD2',
 	},
 });
-
-export default GiphySingleText;

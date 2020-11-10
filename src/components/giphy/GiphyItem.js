@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { extractGiphyData } from './Giphy-utils';
 import GiphyPlaceholder from './GiphyPlaceholder';
 
-const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
+export default function GiphyItem({ item, type = 'fixed_width', style, disabled = false }) {
 	const { width, height, url } = extractGiphyData({ item, type });
 	const navigation = useNavigation();
 	const [loading, setLoading] = useState(false);
@@ -39,5 +39,3 @@ const styled = StyleSheet.create({
 		aspectRatio: 1,
 	},
 });
-
-export default GiphyItem;
