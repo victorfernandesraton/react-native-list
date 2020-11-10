@@ -1,15 +1,6 @@
 import React from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
-const styled = StyleSheet.create({
-	fallback: {
-		backgroundColor: '#20232A',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-});
-
 const GiphyPlaceholder = ({ width = '100%', height = '100%' }) => {
 	return (
 		<View style={{ ...styled.fallback, height, width }}>
@@ -23,5 +14,14 @@ const GiphyPlaceholder = ({ width = '100%', height = '100%' }) => {
 		</View>
 	);
 };
+
+const styled = StyleSheet.create({
+	fallback: {
+		backgroundColor: '#20232A',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+});
 
 export default GiphyPlaceholder;

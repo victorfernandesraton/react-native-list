@@ -7,23 +7,13 @@ import GiphyPlaceholder from './GiphyPlaceholder';
 
 const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 	const { width, height, url } = extractGiphyData({ item, type });
-
-	const styled = StyleSheet.create({
-		item: {
-			height,
-			width,
-			aspectRatio: 1,
-			flex: style?.item?.flex,
-		},
-	});
-
 	const navigation = useNavigation();
-
 	const [loading, setLoading] = useState(false);
+
 	return (
 		<TouchableOpacity
 			disabled={disabled}
-			style={styled.item}
+			style={{ ...styled.item, height, width, flex: style?.item?.flex }}
 			onPress={() => {
 				navigation.navigate('giphy-single', {
 					id: item.id,
@@ -34,7 +24,7 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 			<Image
 				key={item.id}
 				source={{ uri: url }}
-				style={styled.item}
+				style={{ ...styled.item, height, width, flex: style?.item?.flex }}
 				resizeMode="cover"
 				onLoadEnd={() => {
 					setLoading(true);
@@ -43,5 +33,11 @@ const GiphyItem = ({ item, type = 'fixed_width', style, disabled = false }) => {
 		</TouchableOpacity>
 	);
 };
+
+const styled = StyleSheet.create({
+	item: {
+		aspectRatio: 1,
+	},
+});
 
 export default GiphyItem;

@@ -8,42 +8,6 @@ import {
 } from 'react-native';
 import GiphyButtonType from './GiphyButtonType';
 
-const styles = StyleSheet.create({
-	textArea: {
-		alignItems: 'center',
-		backgroundColor: '#e7e7e7',
-		borderRadius: 40,
-		height: 56,
-		flexDirection: 'row',
-		marginHorizontal: 10,
-		marginVertical: 16,
-	},
-	textInput: {
-		alignSelf: 'center',
-		flex: 1,
-		fontSize: 16,
-		height: 32,
-		justifyContent: 'center',
-		marginHorizontal: 16,
-		marginVertical: 16,
-	},
-	closeButton: {
-		alignItems: 'center',
-		height: 32,
-		justifyContent: 'center',
-		marginLeft: 8,
-		borderRadius: 100,
-		borderColor: '#ff457a',
-		borderWidth: 2,
-		marginRight: 16,
-		width: 32,
-	},
-	closeButtonText: {
-		color: '#ff457a',
-		fontSize: 8,
-	},
-});
-
 /**
  *
  * @param {{changeText: BlobCallback, query: string, type: string, typeList: Array<{value: string, label: string}>}}
@@ -88,6 +52,42 @@ const GiphySearchTextBar = ({
 			)}
 		</View>
 	);
-};
+};const styles = StyleSheet.create({
+	textArea: {
+		alignItems: 'center',
+		backgroundColor: '#e7e7e7',
+		borderRadius: 40,
+		height: 56,
+		flexDirection: 'row',
+		marginHorizontal: 10,
+		marginVertical: 16,
+	},
+	textInput: {
+		alignSelf: 'center',
+		flex: 1,
+		fontSize: 16,
+		height: 32,
+		justifyContent: 'center',
+		marginHorizontal: 16,
+		marginVertical: 16,
+	},
+	closeButton: {
+		alignItems: 'center',
+		height: 32,
+		justifyContent: 'center',
+		marginLeft: 8,
+		borderRadius: 100,
+		borderColor: '#ff457a',
+		borderWidth: 2,
+		marginRight: 16,
+		width: 32,
+	},
+	closeButtonText: {
+		color: '#ff457a',
+		fontSize: 8,
+	},
+});
+
+
 
 export default GiphySearchTextBar;
