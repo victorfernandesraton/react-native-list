@@ -33,9 +33,9 @@ const GiphySingleText = ({ label, content, link }) => {
 					<Text
 						style={{ ...styled.textStyle, ...styled.textUrl }}
 						onPress={() => {
-							Linking.canOpenURL(url)
+							Linking.canOpenURL(link)
 								.then((data) => {
-									Linking.openURL(url);
+									Linking.openURL(link);
 								})
 								.catch((data) => {
 									Alert('Unsupported link');
