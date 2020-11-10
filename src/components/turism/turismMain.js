@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import api from '../turism/api';
+import more from '../turism/more';
+
 
 import {
 	View,
@@ -62,7 +64,7 @@ const RenderItem = ({ item }) => {
 			</View>
 
 			<TouchableOpacity style={styles.productButton}>
-				<Text>Acessar</Text>
+				<Text>More</Text>
 			</TouchableOpacity>
 		</View>
 	);
