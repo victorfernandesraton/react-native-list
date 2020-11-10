@@ -3,7 +3,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
 import { DrawerItens } from './Drawer-constants';
-function DrawerView() {
+
+export default function DrawerView() {
 	return (
 		<Drawer.Navigator>
 			{DrawerItens.map((item, key) => {
@@ -23,5 +24,3 @@ function DrawerView() {
 		</Drawer.Navigator>
 	);
 }
-
-export default DrawerView;
