@@ -12,7 +12,7 @@ export default function TopBarView(props) {
 		<View
 			style={{
 				...styles.container,
-				backgroundColor: backgroundColor || 'yellow',
+				backgroundColor: backgroundColor || '#00BFFF',
 			}}
 		>
 			<HanburgerButton {...props} color={buttonColor} />
