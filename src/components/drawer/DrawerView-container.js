@@ -14,6 +14,7 @@ function DrawerView() {
 						options={{
 							title: item.title,
 							drawerLabel: item.title,
+							headerShown: false,
 						}}
 						key={key}
 					/>

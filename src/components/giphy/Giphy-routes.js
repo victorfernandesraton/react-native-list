@@ -10,6 +10,7 @@ export default function Index() {
 			initialRouteName="giphy-list"
 			screenOptions={{
 				headerShown: false,
+				headerShown: false,
 			}}
 		>
 			<StackGiphy.Screen name="giphy-list" component={GiphyScreen} />
