@@ -92,7 +92,7 @@ export default function GiphySingleView({ item }) {
 			</View>
 		</ScrollView>
 	);
-};
+}
 
 const styled = StyleSheet.create({
 	container: {

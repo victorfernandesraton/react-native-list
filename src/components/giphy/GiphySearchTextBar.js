@@ -52,7 +52,7 @@ export default function GiphySearchTextBar({
 			)}
 		</View>
 	);
-};
+}
 const styles = StyleSheet.create({
 	textArea: {
 		alignItems: 'center',

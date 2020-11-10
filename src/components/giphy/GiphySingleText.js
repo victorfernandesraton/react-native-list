@@ -29,7 +29,7 @@ export default function GiphySingleText({ label, content, link }) {
 			)}
 		</View>
 	);
-};
+}
 
 const styled = StyleSheet.create({
 	container: {
