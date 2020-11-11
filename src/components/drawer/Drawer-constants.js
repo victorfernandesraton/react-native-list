@@ -13,7 +13,7 @@ export const DrawerItens = [
 
 	{
 		name: 'turism-info',
-		title: "Informações",
+		title: 'Informações',
 		component: More,
 	},
 
@@ -26,5 +26,5 @@ export const DrawerItens = [
 		name: 'telaContatos',
 		title: 'My Contats',
 		component: TelaContato,
-	}
+	},
 ];

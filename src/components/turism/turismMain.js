@@ -78,8 +78,8 @@ const RenderItem = ({ item, navigation }) => {
 
 			<TouchableOpacity
 				onPress={() => {
-					navigation.navigate('turism-info',{
-						item: item.item
+					navigation.navigate('turism-info', {
+						item: item.item,
 					});
 				}}
 				style={styles.productButton}
