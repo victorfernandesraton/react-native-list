@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../turism/api';
-import { withNavigation } from '@react-navigation';
+import { withNavigation } from 'react-navigation';
 
 
 import {
@@ -19,6 +19,7 @@ import {
 		page: 1,
 	};
 
+	
 	componentDidMount() {
 		this.loadProducts();
 	}
@@ -26,20 +27,20 @@ import {
 	loadProducts = async () => {
         const response = await api.get('/lugares');
         if (this.state.docs.length < 20) {
-            this.setState({
+					this.setState({
                 docs: [
-                    ...this.state.docs,
-                    ...response.data.slice(
-                        this.state.limit * (this.state.page - 1),
+									...this.state.docs,
+									...response.data.slice(
+										this.state.limit * (this.state.page - 1),
                         this.state.limit * this.state.page
-                    ),
+												),
                 ],
                 page: this.state.page + 1,
             });
-        }
+					}
     };
 
-	render() {
+		render() {
 		return (
 			<View style={styles.container}>
 				<FlatList
@@ -55,7 +56,7 @@ import {
 }
 
 const RenderItem = ({ item, navigation }) => {
-	console.log(navigation, item)
+	// console.log(navigation, item)
 
 	return (
 		<View style={styles.productContainer}>
