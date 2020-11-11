@@ -1,3 +1,4 @@
+import { isWithinInterval } from 'date-fns';
 import React, { Component } from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet, Image,} from 'react-native';
 export default class telaContato extends Component {
@@ -54,9 +55,9 @@ export default class telaContato extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    marginTop: 0,
     marginLeft: 10,
-    backgroundColor: "#FFF",
+    backgroundColor: "#00BFFF",
     borderTopWidth:0,
     borderBottomWidth: 0
   },
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 50,
-    marginRigth: 10,
+    marginRight: 10,
     alignSelf: "center"
   },
   info: {
@@ -83,9 +84,11 @@ const styles = StyleSheet.create({
       justifyContent: "flex-start"
   }, 
   name: {
+      color: "#00FF00",
       fontSize: 12
   },
   email: {
+    color: "#00FF00",
     fontSize: 14,
     fontWeight: "bold"
   }
