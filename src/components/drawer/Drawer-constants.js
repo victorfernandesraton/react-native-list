@@ -1,5 +1,5 @@
 import TurismScreen from '../../screen/turism-screen';
-//import GiphyScreen from '../../screen/giphy-screen';
+import More from '../turism/More';
 import GiphyRoutes from '../../components/giphy/Giphy-routes';
 
 export const DrawerItens = [
@@ -9,6 +9,13 @@ export const DrawerItens = [
     component: TurismScreen,
     default: true,
 	},
+
+	{
+		name: 'turism-info',
+		title: "Informações",
+		component: More,
+	},
+
 	{
 		name: 'giphy-routes',
 		title: 'GIPHY',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../turism/api';
-import more from '../turism/more';
+import { withNavigation } from '@react-navigation';
 
 
 import {
@@ -12,7 +12,7 @@ import {
 	Image,
 } from 'react-native';
 
-export default class turismMain extends Component {
+ class turismMain extends Component {
 	state = {
 		docs: [],
 		limit: 3,
@@ -47,14 +47,16 @@ export default class turismMain extends Component {
 					data={this.state.docs}
 					keyExtractor={(item) => item.id}
 					onEndReached={this.loadProducts}
-					renderItem={(item) => <RenderItem item={item} />}
+					renderItem={(item) => <RenderItem item={item} navigation={ this.props.navigation } />}
 				/>
 			</View>
 		);
 	}
 }
 
-const RenderItem = ({ item }) => {
+const RenderItem = ({ item, navigation }) => {
+	console.log(navigation, item)
+
 	return (
 		<View style={styles.productContainer}>
 			<Text style={styles.productTitle}>{item.item.name}</Text>
@@ -63,7 +65,7 @@ const RenderItem = ({ item }) => {
 				<Image source={{ uri: item.item.image }} width={200} height={200} resizeMode='cover'/>
 			</View>
 
-			<TouchableOpacity style={styles.productButton}>
+			<TouchableOpacity onPress={() => { navigation.navigate('turism-info') }} style={styles.productButton}>
 				<Text>More</Text>
 			</TouchableOpacity>
 		</View>
@@ -112,3 +114,6 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 });
+
+
+export default withNavigation(turismMain);
