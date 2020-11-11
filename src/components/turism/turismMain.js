@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import api from '../turism/api';
-import more from '../turism/more';
-
+import { withNavigation } from 'react-navigation';
 
 import {
 	View,
@@ -12,7 +11,7 @@ import {
 	Image,
 } from 'react-native';
 
-export default class turismMain extends Component {
+class turismMain extends Component {
 	state = {
 		docs: [],
 		limit: 3,
@@ -24,20 +23,20 @@ export default class turismMain extends Component {
 	}
 
 	loadProducts = async () => {
-        const response = await api.get('/lugares');
-        if (this.state.docs.length < 20) {
-            this.setState({
-                docs: [
-                    ...this.state.docs,
-                    ...response.data.slice(
-                        this.state.limit * (this.state.page - 1),
-                        this.state.limit * this.state.page
-                    ),
-                ],
-                page: this.state.page + 1,
-            });
-        }
-    };
+		const response = await api.get('/lugares');
+		if (this.state.docs.length < 20) {
+			this.setState({
+				docs: [
+					...this.state.docs,
+					...response.data.slice(
+						this.state.limit * (this.state.page - 1),
+						this.state.limit * this.state.page
+					),
+				],
+				page: this.state.page + 1,
+			});
+		}
+	};
 
 	render() {
 		return (
@@ -47,14 +46,17 @@ export default class turismMain extends Component {
 					data={this.state.docs}
 					keyExtractor={(item) => item.id}
 					onEndReached={this.loadProducts}
-					renderItem={(item) => <RenderItem item={item} />}
+					renderItem={(item) => (
+						<RenderItem item={item} navigation={this.props.navigation} />
+					)}
 				/>
 			</View>
 		);
 	}
 }
 
-const RenderItem = ({ item }) => {
+const RenderItem = ({ item, navigation }) => {
+	console.log(item.item);
 	return (
 		<View style={styles.productContainer}>
 			<Text style={styles.productTitle}>{item.item.name}</Text>
@@ -74,7 +76,14 @@ const RenderItem = ({ item }) => {
 				/>
 			</View>
 
-			<TouchableOpacity style={styles.productButton}>
+			<TouchableOpacity
+				onPress={() => {
+					navigation.navigate('turism-info',{
+						item: item.item
+					});
+				}}
+				style={styles.productButton}
+			>
 				<Text>More</Text>
 			</TouchableOpacity>
 		</View>
@@ -123,3 +132,5 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 });
+
+export default withNavigation(turismMain);
