@@ -56,7 +56,6 @@ class turismMain extends Component {
 }
 
 const RenderItem = ({ item, navigation }) => {
-	console.log(item.item);
 	return (
 		<View style={styles.productContainer}>
 			<Text style={styles.productTitle}>{item.item.name}</Text>
