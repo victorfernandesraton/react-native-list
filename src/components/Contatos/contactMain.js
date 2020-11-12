@@ -46,7 +46,9 @@ class telaContato extends Component {
 							<View style={styles.info}>
 								<TouchableOpacity
 									onPress={() => {
-										this.props.navigation.navigate('contato-detalhe', {item: item})
+										this.props.navigation.navigate('contato-detalhe', {
+											item: item,
+										});
 									}}
 									style={styles.productButton}
 								>

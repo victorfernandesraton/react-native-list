@@ -9,11 +9,14 @@ export default function Index() {
 		<StackContatos.Navigator
 			initialRouteName="contato-lista"
 			screenOptions={{
-				headerShown: false
+				headerShown: false,
 			}}
 		>
 			<StackContatos.Screen name="contato-lista" component={ContatoLista} />
-			<StackContatos.Screen name="contato-detalhe" component={ContatoDetalhes} />
+			<StackContatos.Screen
+				name="contato-detalhe"
+				component={ContatoDetalhes}
+			/>
 		</StackContatos.Navigator>
 	);
 }
