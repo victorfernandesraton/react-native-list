@@ -1,20 +1,13 @@
-import TurismScreen from '../../screen/turism-screen';
-import More from '../turism/More';
-import GiphyRoutes from '../../components/giphy/Giphy-routes';
-import ContatosRoute from '../../components/Contatos/route';
+import TurismRoute from '../turism/routes'
+import GiphyRoutes from '../giphy/Giphy-routes';
+import ContatosRoute from '../Contatos/route';
 
 export const DrawerItens = [
 	{
-		name: 'turism-screen',
+		name: 'turism-route',
 		title: 'Melhores lugares para Conhecer',
-		component: TurismScreen,
+		component: TurismRoute,
 		default: true,
-	},
-
-	{
-		name: 'turism-info',
-		title: 'Informações',
-		component: More,
 	},
 
 	{
