@@ -14,10 +14,11 @@ export default function Index() {
 		>
 			<StackContatos.Screen name="turism-list" component={TurismoList} />
 			<StackContatos.Screen
-				name="turism-details"
+				name="turism-info"
 				component={TurismDetails}
 				options={{
 					headerShown: true,
+					title: 'Detalhes',
 				}}
 			/>
 		</StackContatos.Navigator>

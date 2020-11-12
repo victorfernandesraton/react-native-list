@@ -16,6 +16,10 @@ export default function Index() {
 			<StackContatos.Screen
 				name="contato-detalhe"
 				component={ContatoDetalhes}
+				options={{
+					headerShown: true,
+					title: 'Detalhes',
+				}}
 			/>
 		</StackContatos.Navigator>
 	);
