@@ -33,41 +33,34 @@ class telaContato extends Component {
 
 	render() {
 		return (
-
 			<View style={styles.productContainer}>
 				<FlatList
 					data={this.state.data}
-					renderItem={({ item, navigation }) => (
-						
+					renderItem={({ item }) => (
 						<View style={styles.line}>
-							
 							<Image
 								source={{ uri: item.picture.thumbnail }}
 								style={styles.avatar}
 							/>
-							
+
 							<View style={styles.info}>
-							<TouchableOpacity
-									onPress={() => { this.props.navigation.navigate('telaContatos') }}
+								<TouchableOpacity
+									onPress={() => {
+										this.props.navigation.navigate('contato-detalhe', {item: item})
+									}}
 									style={styles.productButton}
 								>
-								<Text style={styles.email}>{item.email}</Text>
-								<Text style={styles.name}>
-									{item.name.first} {item.name.last}
-								</Text>
+									<Text style={styles.email}>{item.email}</Text>
+									<Text style={styles.name}>
+										{item.name.first} {item.name.last}
+									</Text>
 								</TouchableOpacity>
 							</View>
-							
 						</View>
 					)}
 					keyExtractor={(item) => item.email}
 				/>
-
-				
-
 			</View>
-
-			
 		);
 	}
 }
@@ -120,4 +113,4 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 	},
 });
-export default withNavigation (telaContato)
+export default withNavigation(telaContato);

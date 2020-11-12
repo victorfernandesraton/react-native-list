@@ -1,7 +1,7 @@
 import TurismScreen from '../../screen/turism-screen';
 import More from '../turism/More';
 import GiphyRoutes from '../../components/giphy/Giphy-routes';
-import TelaContato from '../../screen/telaContatos';
+import ContatosRoute from '../../components/Contatos/route';
 
 export const DrawerItens = [
 	{
@@ -23,8 +23,8 @@ export const DrawerItens = [
 		component: GiphyRoutes,
 	},
 	{
-		name: 'telaContatos',
-		title: 'My Contats',
-		component: TelaContato,
+		name: 'contato-routes',
+		title: 'Contatos',
+		component: ContatosRoute,
 	},
 ];

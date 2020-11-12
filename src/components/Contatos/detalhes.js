@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { useNavigation } from '@react-navigation/native';
 import { Text, TouchableOpacity } from 'react-native';
 
-const detalhe = () => {
-	const navigation = useNavigation();
+const Detalhe = (props) => {
+	const {route} = props;
+	const {item} = route.params;
 
 	return (
 		<TouchableOpacity>
-			<Text>Mostrar mais</Text>
+			<Text>{item.name.first}</Text>
 		</TouchableOpacity>
 	);
 };
 
-export default detalhe;
+export default Detalhe;
