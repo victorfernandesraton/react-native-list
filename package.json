@@ -6,7 +6,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "expo:android": "expo start --android",
-    "start": "react-native start",
+    "start": "expo start --android",
     "test": "jest",
     "format": "prettier -w ./src && eslint --fix"
   },
