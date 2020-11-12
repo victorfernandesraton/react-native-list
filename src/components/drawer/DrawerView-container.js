@@ -15,7 +15,7 @@ export default function DrawerView() {
 						options={{
 							title: item.title,
 							drawerLabel: item.title,
-							headerShown: item.title === 'GIPHY' ? false : true
+							headerShown: false,
 						}}
 						key={key}
 					/>

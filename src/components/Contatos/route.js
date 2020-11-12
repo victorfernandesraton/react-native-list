@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ContatoDetalhes from './detalhes';
-import ContatoLista from './contactMain';
+import ContatoLista from '../../screen/telaContatos';
 
 const StackContatos = createStackNavigator();
 export default function Index() {

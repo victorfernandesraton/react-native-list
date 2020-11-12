@@ -12,8 +12,8 @@ export const DrawerItens = [
 	{
 		name: 'giphy-routes',
 		title: 'GIPHY',
-		component: GiphyRoutes,
 		default: true,
+		component: GiphyRoutes,
 	},
 	{
 		name: 'contato-routes',

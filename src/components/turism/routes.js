@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import TurismoList from './turismMain';
+import TurismoList from '../../screen/turism-screen';
 import TurismDetails from './More';
 
 const StackContatos = createStackNavigator();
