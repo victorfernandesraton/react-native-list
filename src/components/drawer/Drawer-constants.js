@@ -1,4 +1,4 @@
-import TurismRoute from '../turism/routes'
+import TurismRoute from '../turism/routes';
 import GiphyRoutes from '../giphy/Giphy-routes';
 import ContatosRoute from '../Contatos/route';
 
@@ -8,7 +8,7 @@ export const DrawerItens = [
 		title: 'Melhores lugares para Conhecer',
 		component: TurismRoute,
 	},
-	
+
 	{
 		name: 'giphy-routes',
 		title: 'GIPHY',

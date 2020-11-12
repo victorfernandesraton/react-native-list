@@ -1,23 +1,19 @@
 import React from 'react';
 
-import { View,
-	Text,
-	StyleSheet,
-	Image, } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 const Detalhe = (props) => {
 	const { route } = props;
 	const { item } = route.params;
 
 	return (
-        
 		<View>
-            <Image source={{ uri: item.picture.thumbnail }} style={styles.avatar}/>
-			<Text>{'Nome: '+ item.name.first + " " + item.name.last}</Text>
-            <Text>{'Sexo: ' + item.gender}</Text>
-            <Text>{'Cidade: ' + item.location.city}</Text>
-            <Text>{'Estado: ' + item.location.state}</Text>
-         </View>
+			<Image source={{ uri: item.picture.thumbnail }} style={styles.avatar} />
+			<Text>{'Nome: ' + item.name.first + ' ' + item.name.last}</Text>
+			<Text>{'Sexo: ' + item.gender}</Text>
+			<Text>{'Cidade: ' + item.location.city}</Text>
+			<Text>{'Estado: ' + item.location.state}</Text>
+		</View>
 	);
 };
 
@@ -52,8 +48,8 @@ const styles = StyleSheet.create({
 		width: 100,
 		height: 100,
 		borderRadius: 50,
-        marginRight: 10,
-        marginBottom: 10,
+		marginRight: 10,
+		marginBottom: 10,
 		alignSelf: 'center',
 	},
 	info: {
