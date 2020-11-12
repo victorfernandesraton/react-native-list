@@ -7,13 +7,13 @@ export const DrawerItens = [
 		name: 'turism-route',
 		title: 'Melhores lugares para Conhecer',
 		component: TurismRoute,
-		default: true,
 	},
-
+	
 	{
 		name: 'giphy-routes',
 		title: 'GIPHY',
 		component: GiphyRoutes,
+		default: true,
 	},
 	{
 		name: 'contato-routes',

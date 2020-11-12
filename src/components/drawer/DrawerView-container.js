@@ -6,7 +6,7 @@ import { DrawerItens } from './Drawer-constants';
 
 export default function DrawerView() {
 	return (
-		<Drawer.Navigator>
+		<Drawer.Navigator openByDefault='giphy-routes'>
 			{DrawerItens.map((item, key) => {
 				return (
 					<Drawer.Screen
@@ -15,7 +15,7 @@ export default function DrawerView() {
 						options={{
 							title: item.title,
 							drawerLabel: item.title,
-							headerShown: false,
+							headerShown: item.title === 'GIPHY' ? false : true
 						}}
 						key={key}
 					/>
