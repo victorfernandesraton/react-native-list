@@ -8,7 +8,9 @@ import {
 	StyleSheet,
 	Image,
 } from 'react-native';
-export default class telaContato extends Component {
+import { withNavigation } from 'react-navigation';
+
+class telaContato extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -31,27 +33,41 @@ export default class telaContato extends Component {
 
 	render() {
 		return (
-			<View style={StyleSheet.container}>
+
+			<View style={styles.productContainer}>
 				<FlatList
 					data={this.state.data}
-					renderItem={({ item }) => (
+					renderItem={({ item, navigation }) => (
+						
 						<View style={styles.line}>
+							
 							<Image
 								source={{ uri: item.picture.thumbnail }}
 								style={styles.avatar}
 							/>
-
+							
 							<View style={styles.info}>
+							<TouchableOpacity
+									onPress={() => { this.props.navigation.navigate('telaContatos') }}
+									style={styles.productButton}
+								>
 								<Text style={styles.email}>{item.email}</Text>
 								<Text style={styles.name}>
 									{item.name.first} {item.name.last}
 								</Text>
+								</TouchableOpacity>
 							</View>
+							
 						</View>
 					)}
 					keyExtractor={(item) => item.email}
 				/>
+
+				
+
 			</View>
+
+			
 		);
 	}
 }
@@ -60,9 +76,17 @@ const styles = StyleSheet.create({
 	container: {
 		marginTop: 0,
 		marginLeft: 10,
-		backgroundColor: '#00BFFF',
+		backgroundColor: '#FFFFFF',
+
 		borderTopWidth: 0,
 		borderBottomWidth: 0,
+	},
+	productContainer: {
+		backgroundColor: '#fff',
+		//borderWidth: 1,
+		//borderColor: 1,                                                                                      borderRadius: 5,
+		padding: 20,
+		marginBottom: 20,
 	},
 	logo: {
 		width: 100,
@@ -87,12 +111,13 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 	},
 	name: {
-		color: '#00FF00',
+		color: '#000000',
 		fontSize: 12,
 	},
 	email: {
-		color: '#00FF00',
+		color: '#000000',
 		fontSize: 14,
 		fontWeight: 'bold',
 	},
 });
+export default withNavigation (telaContato)
