@@ -6,7 +6,7 @@ import { DrawerItens } from './Drawer-constants';
 
 export default function DrawerView() {
 	return (
-		<Drawer.Navigator openByDefault="giphy-routes">
+		<Drawer.Navigator initialRouteName='giphy-routes'openByDefault={false} >
 			{DrawerItens.map((item, key) => {
 				return (
 					<Drawer.Screen
