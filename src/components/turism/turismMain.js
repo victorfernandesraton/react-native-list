@@ -46,7 +46,7 @@ class turismMain extends Component {
 					data={this.state.docs}
 					keyExtractor={(item) => item.id}
 					onEndReached={this.loadProducts}
-					onEndReachedThreshold={0.20}
+					onEndReachedThreshold={0.2}
 					renderItem={(item) => (
 						<RenderItem item={item} navigation={this.props.navigation} />
 					)}
@@ -65,15 +65,10 @@ const RenderItem = ({ item, navigation }) => {
 				style={{
 					display: 'flex',
 					justifyContent: 'center',
-					alignItems: 'center',	
+					alignItems: 'center',
 				}}
 			>
-				<Image
-					source={{ uri: item.item.image, }}
-					width={200}
-					height={200}
-					// resizeMode="cover"
-				/>
+				<Image source={{ uri: item.item.image }} style={styles.avatar} />
 			</View>
 
 			<TouchableOpacity
@@ -93,7 +88,7 @@ const RenderItem = ({ item, navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fafafa',
-		height: '90%'
+		height: '90%',
 	},
 
 	list: {
@@ -131,6 +126,13 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginTop: 10,
+	},
+
+	avatar: {
+		width: 300,
+		height: 200,
+		marginRight: 10,
+		alignSelf: 'center',
 	},
 });
 
