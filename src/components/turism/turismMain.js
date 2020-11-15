@@ -14,7 +14,7 @@ import {
 class turismMain extends Component {
 	state = {
 		docs: [],
-		limit: 3,
+		limit: 5,
 		page: 1,
 	};
 
@@ -46,6 +46,7 @@ class turismMain extends Component {
 					data={this.state.docs}
 					keyExtractor={(item) => item.id}
 					onEndReached={this.loadProducts}
+					onEndReachedThreshold={0.20}
 					renderItem={(item) => (
 						<RenderItem item={item} navigation={this.props.navigation} />
 					)}
@@ -64,14 +65,14 @@ const RenderItem = ({ item, navigation }) => {
 				style={{
 					display: 'flex',
 					justifyContent: 'center',
-					alignItems: 'center',
+					alignItems: 'center',	
 				}}
 			>
 				<Image
-					source={{ uri: item.item.image }}
+					source={{ uri: item.item.image, }}
 					width={200}
 					height={200}
-					resizeMode="cover"
+					// resizeMode="cover"
 				/>
 			</View>
 
@@ -92,6 +93,7 @@ const RenderItem = ({ item, navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fafafa',
+		height: '90%'
 	},
 
 	list: {
