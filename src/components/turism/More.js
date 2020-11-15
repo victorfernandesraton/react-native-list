@@ -9,15 +9,10 @@ const More = (props) => {
 
 	return (
 		<View>
-			<Text>{item.name}</Text>
-
-			<Text>{item.image}</Text>
-
-			<Text>{item.description}</Text>
-
-			<Text>{item.createAt}</Text>
-
-			<Text>{item.url}</Text>
+			<Text>{ item.item.name }</Text>
+			<Text>{ item.item.description }</Text>
+			<Text>{ item.item.createdAt }</Text>
+			<Text>{ item.item.url }</Text>
 		</View>
 	);
 };
