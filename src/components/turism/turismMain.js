@@ -69,10 +69,8 @@ const RenderItem = ({ item, navigation }) => {
 				}}
 			>
 				<Image
-					source={{ uri: item.item.image }}
-					width={200}
-					height={200}
-					resizeMode="cover"
+                   source={{ uri: item.item.image }}
+                   style={styles.avatar}
 				/>
 			</View>
 
@@ -131,6 +129,13 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginTop: 10,
 	},
+
+	avatar: {
+        width: 300,
+        height: 200,
+        marginRight: 10,
+        alignSelf: 'center',
+    },
 });
 
 export default withNavigation(turismMain);
