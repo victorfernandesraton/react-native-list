@@ -7,9 +7,12 @@ const More = () => {
 	const navigation = useNavigation();
 
 	return (
-		<TouchableOpacity>
-			<Text>Mostrar mais</Text>
-		</TouchableOpacity>
+		<View>
+			<Text>{ item.item.name }</Text>
+			<Text>{ item.item.description }</Text>
+			<Text>{ item.item.createdAt }</Text>
+			<Text>{ item.item.url }</Text>
+		</View>
 	);
 };
 

@@ -59,6 +59,7 @@ const RenderItem = ({ item, navigation }) => {
 	return (
 		<View style={styles.productContainer}>
 			<Text style={styles.productTitle}>{item.item.name}</Text>
+			<Text style={styles.productTitle}>{item.item.image}</Text>
 			<Text style={styles.productDescription}>{item.item.descrition}</Text>
 			<View
 				style={{
