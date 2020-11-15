@@ -1,15 +1,24 @@
 import React from 'react';
 
-import { useNavigation } from '@react-navigation/native';
-import { Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 
-const More = () => {
-	const navigation = useNavigation();
+const More = (props) => {
+	const { route } = props;
+
+	const { item } = route.params;
 
 	return (
-		<TouchableOpacity>
-			<Text>Mostrar mais</Text>
-		</TouchableOpacity>
+		<View>
+			<Text>{item.name}</Text>
+
+			<Text>{item.image}</Text>
+
+			<Text>{item.description}</Text>
+
+			<Text>{item.createAt}</Text>
+
+			<Text>{item.url}</Text>
+		</View>
 	);
 };
 
